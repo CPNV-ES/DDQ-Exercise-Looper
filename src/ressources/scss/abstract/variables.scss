@@ -1,4 +1,12 @@
-$primary-color = #EBC25E;
-$create-color = #8EE6E5;
-$manage-color = #A7DB87;
-$text-title-color = #CCCCCC;
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
+
+// Colors
+$primary-color: #EBC25E;
+$create-color: #8EE6E5;
+$manage-color: #A7DB87;
+
+// Text colors
+$text-title-color: #CCCCCC;
+
+// Text font
+$text-font: Balsamiq Sans;
