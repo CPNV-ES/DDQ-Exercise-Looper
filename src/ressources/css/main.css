@@ -7,6 +7,12 @@ html, body {
 .main-button {
   background-color: #EBC25E; }
 
+.create-button {
+  background-color: #8EE6E5; }
+
+.manage-button {
+  background-color: #A7DB87; }
+
 .home-header {
   height: 300px;
   width: 100%;
