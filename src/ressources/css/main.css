@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap");
+html, body {
+  margin: 0px;
+  padding: 0px;
+  font-family: Balsamiq Sans; }
+
+.main-button {
+  background-color: #EBC25E; }
+
+.create-button {
+  background-color: #8EE6E5; }
+
+.manage-button {
+  background-color: #A7DB87; }
+
+.home-header {
+  height: 300px;
+  width: 100%;
+  background-color: #EBC25E;
+  color: #ffffff;
+  text-align: center;
+  font-size: 25px; }
+  .home-header img {
+    margin-top: 30px; }
+  .home-header div {
+    margin-top: 40px; }
+    .home-header div h1 {
+      margin: 0; }
