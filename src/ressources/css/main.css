@@ -4,8 +4,19 @@ html, body {
   padding: 0px;
   font-family: Balsamiq Sans; }
 
+.main-button {
+  background-color: #EBC25E; }
+
 .home-header {
   height: 300px;
   width: 100%;
   background-color: #EBC25E;
-  text-align: center; }
+  color: #ffffff;
+  text-align: center;
+  font-size: 25px; }
+  .home-header img {
+    margin-top: 30px; }
+  .home-header div {
+    margin-top: 40px; }
+    .home-header div h1 {
+      margin: 0; }

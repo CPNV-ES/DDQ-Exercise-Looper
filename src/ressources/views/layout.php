@@ -7,8 +7,12 @@
     <title><!-- TITLE --></title>
 </head>
 <body>
-<header class="home-header">
-
-</header>
+    <header class="home-header">
+        <img src="../images/logo.png">
+        <div>
+            <h1>E x e r c i s e</h1>
+            <h1>L o o p e r</h1>
+        </div>
+    </header>
 </body>
 </html>

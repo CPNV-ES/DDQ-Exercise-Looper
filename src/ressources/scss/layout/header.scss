@@ -2,5 +2,19 @@
   height: 300px;
   width: 100%;
   background-color: $primary-color;
+  color: $text-white;
   text-align: center;
+  font-size: 25px;
+
+  img {
+    margin-top: 30px;
+  }
+
+  div {
+    margin-top: 40px;
+
+    h1 {
+      margin: 0;
+    }
+  }
 }
