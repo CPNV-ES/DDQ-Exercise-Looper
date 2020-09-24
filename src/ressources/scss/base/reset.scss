@@ -3,3 +3,37 @@ html, body {
   padding: 0px;
   font-family: $text-font;
 }
+
+.primary-color {
+  background-color: $primary-color;
+}
+
+.create-color {
+  background-color: $create-color;
+}
+
+.manage-color {
+  background-color: $manage-color;
+}
+
+.text-title {
+  color: $grey-color;
+}
+
+.text-white {
+  color: $white-color;
+}
+
+.row {
+  width: 80%;
+  margin: auto;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.column {
+  width: calc(100% / 3);
+  margin: 10px;
+  flex-grow: 1;
+}

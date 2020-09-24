@@ -2,16 +2,54 @@
 html, body {
   margin: 0px;
   padding: 0px;
-  font-family: Balsamiq Sans; }
+  font-family: Balsamiq Sans;
+}
 
-.main-button {
-  background-color: #EBC25E; }
+.primary-color {
+  background-color: #EBC25E;
+}
 
-.create-button {
-  background-color: #8EE6E5; }
+.create-color {
+  background-color: #8EE6E5;
+}
 
-.manage-button {
-  background-color: #A7DB87; }
+.manage-color {
+  background-color: #A7DB87;
+}
+
+.text-title {
+  color: #CCCCCC;
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.row {
+  width: 80%;
+  margin: auto;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.column {
+  width: calc(100% / 3);
+  margin: 10px;
+  flex-grow: 1;
+}
+
+.button {
+  height: 50px;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 10px;
+}
+.button:hover {
+  background-color: #CCCCCC;
+}
 
 .home-header {
   height: 300px;
@@ -19,10 +57,16 @@ html, body {
   background-color: #EBC25E;
   color: #ffffff;
   text-align: center;
-  font-size: 25px; }
-  .home-header img {
-    margin-top: 30px; }
-  .home-header div {
-    margin-top: 40px; }
-    .home-header div h1 {
-      margin: 0; }
+  font-size: 25px;
+}
+.home-header img {
+  margin-top: 30px;
+}
+.home-header div {
+  margin-top: 40px;
+}
+.home-header div h1 {
+  margin: 0;
+}
+
+/*# sourceMappingURL=main.css.map */
