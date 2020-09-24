@@ -18,14 +18,13 @@ class Router {
             $matches = [];
             if(in_array($method, $route["methods"]) && preg_match($pattern, $requestUri, $matches)) {
                 array_shift($matches);  // remove first match as it contains the whole request uri
-                var_dump($matches);
 
                 $actionType = gettype($route["action"]);
                 if($actionType == "string" && strpos($route["action"], "::") != -1 ) {
                     $parts = explode("::", $route["action"]);
                     $controllerName = $parts[0];
                     $actionName = $parts[1];
-                    echo "Controller: " . $controllerName . " -- Action: " .$actionName;
+
                     include "src/app/Controllers/" . $controllerName . ".php";
 
                     $controller = new $controllerName;
