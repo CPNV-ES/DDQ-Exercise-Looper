@@ -15,9 +15,9 @@ class Router {
 
         foreach($this->routes as $route) {
             $pattern = "@^" . preg_replace('/\\\:[a-zA-Z0-9\_\-]+/', '([a-zA-Z0-9\-\_]+)', preg_quote($route['url'])) . "$@D";
-            $matches = [];
-            if(in_array($method, $route["methods"]) && preg_match($pattern, $requestUri, $matches)) {
-                array_shift($matches);  // remove first match as it contains the whole request uri
+            $args = [];
+            if(in_array($method, $route["methods"]) && preg_match($pattern, $requestUri, $args)) {
+                array_shift($args);  // remove first match as it contains the whole request uri
 
                 $actionType = gettype($route["action"]);
                 if($actionType == "string" && strpos($route["action"], "::") != -1 ) {
@@ -28,10 +28,10 @@ class Router {
                     include "src/app/Controllers/" . $controllerName . ".php";
 
                     $controller = new $controllerName;
-                    call_user_func_array([$controller, $actionName], $matches);
+                    call_user_func_array([$controller, $actionName], $args);
                 }
                 elseif($actionType == "object" && is_callable($route["action"])) {
-                    call_user_func_array($route["action"], $matches);
+                    call_user_func_array($route["action"], $args);
                 }
 
                 return;
