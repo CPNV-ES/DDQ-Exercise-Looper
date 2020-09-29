@@ -2,7 +2,7 @@
 
 class Model{
     protected $table = '';
-    protected $readable = []; Fields the model can read
+    protected $readables = []; //Fields the model can read
     protected $dbConnection;
 
     /**
@@ -18,9 +18,27 @@ class Model{
      * @return array $data
      */
     public function all(){
-        //todo
+        $this->dbconection->connect();
+        
     }
 
+    /**
+     * Convert an array to a string for sql request
+     * @param array $readables
+     * @return string $readablesStr 
+     */
+    protected function genReadableStr($readables){
+        $tmpReadablesStr;
+
+        foreach($readable as $readable){
+            if(is_array($readable)){
+                $tmpReadablesStr .= $readable['column']." as ". $readable['name'].","; 
+            }
+            else{
+                $tmpReadablesStr .= $readable.",";
+            }
+        }
+    }
 
     /**
      * Request to the database informations about the specified registery related to the table model.
