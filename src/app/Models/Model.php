@@ -7,10 +7,10 @@ class Model{
 
     /**
      * At the initalisazion the model will take a database connection as argument
-     * @var 
+     * @param PDO $dbConnection
      */
     protected function __construct($dbConnection){
-        $this->$dbConnection = $dbConnection;
+        $this->dbConnection = $dbConnection;
     }
 
     /**
@@ -18,7 +18,7 @@ class Model{
      * @return array $data
      */
     public function all(){
-        $this->dbconection->connect();
+        $this->dbConnection->connect();
         
     }
 
@@ -88,5 +88,4 @@ class Model{
     public function delete(){
         //todo
     }
-
 }
