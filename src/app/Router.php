@@ -24,10 +24,21 @@ class Router {
                     $parts = explode("::", $route["action"]);
                     $controllerName = $parts[0];
                     $actionName = $parts[1];
+                    $classPath = "src/app/Controllers/" . $controllerName . ".php";
+                    
+                    if(!file_exists($classPath)) {
+                        $this->error_404();
+                        return;
+                    }
 
-                    include "src/app/Controllers/" . $controllerName . ".php";
-
+                    include $classPath;
                     $controller = new $controllerName;
+
+                    if(!method_exists($controller, $actionName)) {
+                        $this->error_404();
+                        return;
+                    }
+
                     call_user_func_array([$controller, $actionName], $args);
                 }
                 elseif($actionType == "object" && is_callable($route["action"])) {
