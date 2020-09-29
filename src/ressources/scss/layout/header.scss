@@ -2,19 +2,26 @@
   height: 300px;
   width: 100%;
   background-color: $primary-color;
-  color: $text-white;
+  color: $white-color;
   text-align: center;
-  font-size: 25px;
+  font-size: 3rem;
+  letter-spacing: 1.1rem;
 
   img {
-    margin-top: 30px;
+    margin-top: 2rem;
   }
 
   div {
-    margin-top: 40px;
+    margin-top: 2.5rem;
 
     h1 {
       margin: 0;
     }
+  }
+}
+
+@media (max-width: 960px){
+  .column {
+    width: 100%;
   }
 }

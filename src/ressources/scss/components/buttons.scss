@@ -1,11 +1,12 @@
-.main-button {
-  background-color: $primary-color;
-}
+.button {
+  height: 3rem;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  line-height: 3rem;
+  border-radius: 10px;
 
-.create-button {
-  background-color: $create-color;
-}
-
-.manage-button {
-  background-color: $manage-color;
+  &:hover {
+    background-color: $grey-color;
+  }
 }
