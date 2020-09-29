@@ -19,7 +19,12 @@ class Model{
      */
     public function all(){
         $this->dbConnection->connect();
-        
+        $req = 'select :column FROM :table';
+
+        $columns = $this->genReadableStr($this->readable);
+
+        $this->dbConnection->prepare($req);
+        $this->dbConnection->execute([':column' => $columns,':table' => $this->table]);
     }
 
     /**
