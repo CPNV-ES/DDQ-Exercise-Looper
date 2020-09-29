@@ -1,39 +1,46 @@
-html, body {
-  margin: 0px;
-  padding: 0px;
-  font-family: $text-font;
+*, *:before, *:after{
+  box-sizing: border-box;
 }
 
-.primary-color {
-  background-color: $primary-color;
+html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: none;
 }
 
-.create-color {
-  background-color: $create-color;
+footer, header, nav, section, main{
+  display: block;
 }
 
-.manage-color {
-  background-color: $manage-color;
+body{
+  line-height: 1;
 }
 
-.text-title {
-  color: $grey-color;
+ol, ul{
+  list-style: none;
 }
 
-.text-white {
-  color: $white-color;
+blockquote, q{
+  quotes: none;
 }
 
-.row {
-  width: 80%;
-  margin: auto;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
+blockquote:before, blockquote:after, q:before, q:after{
+  content: '';
+  content: none;
 }
 
-.column {
-  width: calc(100% / 3);
-  margin: 10px;
-  flex-grow: 1;
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input{
+  -webkit-appearance: none;
+  border-radius: 0;
 }

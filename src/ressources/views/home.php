@@ -1,8 +1,8 @@
 <?php
 $header =
     '<div>
-        <h1>E x e r c i s e</h1>
-        <h1>L o o p e r</h1>
+        <h1>Exercise</h1>
+        <h1>Looper</h1>
     </div>';
 
 $content =
