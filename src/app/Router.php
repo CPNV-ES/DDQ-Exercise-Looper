@@ -20,12 +20,13 @@ class Router {
                 array_shift($args);  // remove first match as it contains the whole request uri
 
                 $actionType = gettype($route["action"]);
+
                 if($actionType == "string" && strpos($route["action"], "::") != -1 ) {
                     $parts = explode("::", $route["action"]);
                     $controllerName = $parts[0];
                     $actionName = $parts[1];
-                    $classPath = "src/app/Controllers/" . $controllerName . ".php";
-                    
+                    $classPath = "../app/Controllers/" . $controllerName . ".php";
+
                     if(!file_exists($classPath)) {
                         $this->error_404();
                         return;

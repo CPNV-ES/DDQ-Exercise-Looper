@@ -1,5 +1,7 @@
 <?php
+require_once "../app/Router.php";
 
-$webrouter = new Router($_SERVER['REQUEST_URI']);
-
-$webrouter->get(['/','HomeController@index']);
+$webrouter = new \Looper\App\Router();
+    
+$webrouter->add("/exercises", "ExerciseController::index");
+$webrouter->run();
