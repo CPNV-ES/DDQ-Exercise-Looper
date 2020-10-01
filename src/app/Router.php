@@ -64,6 +64,11 @@ class Router {
             "action" => $action,
             "methods" => $methods,
         ]);
+
+        // Sort routes based on their url to give routes with no parameter higher priority
+        usort($this->routes, function($a, $b) {
+            return substr_count($a["url"], "/") - substr_count($a["url"], ":") < substr_count($b["url"], "/")  - substr_count($b["url"], ":");
+        });
     }
 
     public function error_404() {
