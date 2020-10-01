@@ -1,4 +1,6 @@
 <?php
+$headerClass = 'home-header primary-color';
+
 $header =
     '<div>
         <h1>Exercise</h1>

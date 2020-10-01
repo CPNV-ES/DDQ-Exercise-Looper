@@ -7,7 +7,7 @@
     <title>ExerciseLooper</title>
 </head>
 <body>
-    <header class="home-header">
+    <header class="<?= $headerClass; ?>">
         <img src="../images/logo.png">
         <?= $header; ?>
     </header>
