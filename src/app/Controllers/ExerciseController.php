@@ -25,7 +25,7 @@ class ExerciseController {
     public function take() {
 
         // Todo : add the call method all() from the ExerciseModel
-        
-        require_once "../resources/views/exercices/take.php";
+
+        require_once "../ressources/views/exercises/take.php";
     }
 }
