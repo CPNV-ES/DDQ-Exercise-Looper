@@ -28,16 +28,14 @@ class Router {
                     $classPath = "../app/Controllers/" . $controllerName . ".php";
 
                     if(!file_exists($classPath)) {
-                        $this->error_404();
-                        return;
+                        throw new \InvalidArgumentException("The specified controller does not exist: " . $controllerName);
                     }
 
                     include $classPath;
                     $controller = new $controllerName;
 
                     if(!method_exists($controller, $actionName)) {
-                        $this->error_404();
-                        return;
+                        throw new \InvalidArgumentException("The specified action method '" .$actionName . "' does not exist in the controller class '" . $controllerName . "'");
                     }
 
                     call_user_func_array([$controller, $actionName], $args);
@@ -45,12 +43,15 @@ class Router {
                 elseif($actionType == "object" && is_callable($route["action"])) {
                     call_user_func_array($route["action"], $args);
                 }
+                else {
+                    throw new \UnexpectedValueException("No matching routes were found for request uri: " . $requestUri);
+                }
 
                 return;
             }
         }
 
-        $this->error_404();
+        throw new \UnexpectedValueException("No matching routes were found for request uri: " . $requestUri);
     }
 
     public function add($url, $action, $methods = "GET") {
@@ -69,9 +70,5 @@ class Router {
         usort($this->routes, function($a, $b) {
             return substr_count($a["url"], "/") - substr_count($a["url"], ":") < substr_count($b["url"], "/")  - substr_count($b["url"], ":");
         });
-    }
-
-    public function error_404() {
-        echo "404 lole";
     }
 }
