@@ -4,6 +4,7 @@ $headerClass = 'home-header primary-color';
 
 $header =
     '<div class="text-white">
+        <img src="/images/logo.png">
         <h1>Exercise<br/>Looper</h1>
     </div>';
 
@@ -20,4 +21,4 @@ $content =
         </div>
      </div>';
 
-require_once "layout.php";
+require_once "../ressources/views/layout.php";

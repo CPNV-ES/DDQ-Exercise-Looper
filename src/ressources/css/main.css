@@ -73,7 +73,7 @@ body {
 }
 
 .row {
-  width: 80%;
+  width: 60%;
   margin: auto;
   padding: 1rem;
   display: flex;
@@ -159,24 +159,91 @@ body {
   text-align: center;
   font-size: 3rem;
   letter-spacing: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 .home-header img {
-  margin-top: 2rem;
-}
-.home-header div {
-  margin-top: 2.5rem;
-}
-.home-header div h1 {
-  margin: 0;
+  margin-bottom: 40px;
 }
 
 .basic-header {
   height: 50px;
   width: 100%;
 }
+.basic-header img {
+  height: 50px;
+  width: 50px;
+}
 
-@media (max-width: 960px) {
-  .column {
+@media (max-width: 1400px) {
+  .col-1 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1400px) {
+  .col-2 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1400px) {
+  .col-3 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1400px) {
+  .col-4 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1400px) {
+  .col-5 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1400px) {
+  .col-6 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1400px) {
+  .col-7 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1400px) {
+  .col-8 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1400px) {
+  .col-9 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1400px) {
+  .col-10 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1400px) {
+  .col-11 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1400px) {
+  .col-12 {
     width: 100%;
   }
 }
