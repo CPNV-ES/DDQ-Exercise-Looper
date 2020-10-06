@@ -15,7 +15,7 @@ class ExerciseController {
     /**
      * This method displays the view to create an exercise
      */
-    public function new() {
+    public function create() {
         require_once "../ressources/views/exercises/create.php";
     }
 
