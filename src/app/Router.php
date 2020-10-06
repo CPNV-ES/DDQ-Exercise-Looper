@@ -64,6 +64,13 @@ class Router {
 
         $url = rtrim($url, "/");
 
+        foreach($this->routes as $route) {
+            if($route["url"] != $url) continue;
+            if(array_intersect($route["methods"], $methods)) {
+                throw new \InvalidArgumentException("A route with the same URL and at least one of the same method is already registered.");
+            }
+        }
+
         array_push($this->routes, [
             "url" => $url,
             "action" => $action,
