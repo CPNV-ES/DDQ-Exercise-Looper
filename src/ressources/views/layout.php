@@ -9,7 +9,7 @@
 <body>
     <header class="<?= $headerClass; ?>">
         <div>
-            <img src="/images/logo.png">
+            <a href="/"><img src="/images/logo.png"></a>
             <?= $header; ?>
         </div>
     </header>
