@@ -21,7 +21,11 @@ class Router {
 
                 $actionType = gettype($route["action"]);
 
-                if($actionType == "string" && strpos($route["action"], "::") != -1 ) {
+                if($actionType == "string") {
+                    if( strpos($route["action"], "::") == false) {
+                        throw new \InvalidArgumentException("The action string is malformed");
+                    }
+
                     $parts = explode("::", $route["action"]);
                     $controllerName = $parts[0];
                     $actionName = $parts[1];
