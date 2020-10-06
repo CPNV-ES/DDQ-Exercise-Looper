@@ -33,7 +33,9 @@ body {
     justify-content: space-between;
 }
 
-.column {
-    width: calc(100% / 3);
-    padding: 1rem;
+@for $i from 1 through 12 {
+    .col-#{$i} {
+        width: calc(100% / #{$i});
+        padding: 1rem;
+    }
 }
