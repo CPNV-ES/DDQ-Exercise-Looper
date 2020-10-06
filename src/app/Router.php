@@ -35,7 +35,7 @@ class Router {
                         throw new \InvalidArgumentException("The specified controller does not exist: " . $controllerName);
                     }
 
-                    include $classPath;
+                    include_once $classPath;
                     $controller = new $controllerName;
 
                     if(!method_exists($controller, $actionName)) {
