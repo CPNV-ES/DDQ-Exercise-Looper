@@ -1,16 +1,24 @@
 <?php
 
-class Model{
+class Model {
+
     protected $table = '';
-    protected $readables = []; //Fields the model can read
+    public $readables = []; //Fields the model can read
+    protected $writables = []; //Fields the model can 
     protected $dbConnection;
 
     /**
      * At the initalisazion the model will take a database connection as argument
      * @param PDO $dbConnection
      */
-    protected function __construct($dbConnection){
+    public function __construct($dbConnection, $debug = false){
         $this->dbConnection = $dbConnection;
+
+        if($debug){
+            $this->table = 'test';
+            $this->readables = ['name','firstname','birthday'];
+            $this->writables = ['name','firstname','birthday','favorite_pets'];
+        }
     }
 
     /**
@@ -18,13 +26,32 @@ class Model{
      * @return array $data
      */
     public function all(){
-        $this->dbConnection->connect();
-        $req = 'select :column FROM :table';
+        $req = "SELECT :column FROM :table";
 
-        $columns = $this->genReadableStr($this->readable);
+        $tmpStr = '';
 
-        $this->dbConnection->prepare($req);
-        $this->dbConnection->execute([':column' => $columns,':table' => $this->table]);
+        $nbColumns = count($this->readables);
+
+        for($x = 1;$x <= $nbColumns;$x++){
+            $tmpStr .=  $x<$nbColumns?'?,':'?';
+        }
+
+        str_replace(':column',$tmpStr,$req);
+
+        var_dump($req);        
+
+        $columns = $this->genReadableStr($this->readables);
+
+        $sth = $this->dbConnection->prepare($req);
+
+        $sth->bindValue(':colum', $columns);
+        $sth->bindValue(':table', $this->table);
+
+        $bool = $sth->execute();
+
+        var_dump($bool);
+
+        return $sth->fetchAll();
     }
 
     /**
@@ -33,16 +60,22 @@ class Model{
      * @return string $readablesStr 
      */
     protected function genReadableStr($readables){
-        $tmpReadablesStr;
+        $tmpReadablesStr = '';
 
-        foreach($readable as $readable){
+        $x = 0;
+        foreach($readables as $readable){
             if(is_array($readable)){
                 $tmpReadablesStr .= $readable['column']." as ". $readable['name'].","; 
             }
-            else{
+            else if($x < count($readables) - 1){
                 $tmpReadablesStr .= $readable.",";
             }
+            else{
+                $tmpReadablesStr .= $readable;
+            }
+            $x++;
         }
+        return $tmpReadablesStr;
     }
 
     /**
