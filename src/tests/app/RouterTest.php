@@ -66,6 +66,13 @@ class RouterTest extends TestCase {
         $router->run("/", "GET");
     }
 
+    public function test_throwsWithEmptyAction() {
+        $router = new \Looper\App\Router();
+        $router->add("/", "DummyController::", "GET");
+        $this->expectException(\InvalidArgumentException::class);
+
+        $router->run("/", "GET");
+    }
 
     public function test_throwsWithMalformedActionString() {
         $router = new \Looper\App\Router();
