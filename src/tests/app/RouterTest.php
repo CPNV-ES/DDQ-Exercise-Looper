@@ -81,4 +81,11 @@ class RouterTest extends TestCase {
 
         $router->run("/", "GET");
     }
+
+    public function test_throwsWhenAddingDuplicateRoute() {
+        $router = new \Looper\App\Router();
+        $router->add("/test", function(){ }, "GET");
+        $this->expectException(\InvalidArgumentException::class);
+        $router->add("/test/", "foo::bar", ["GET", "POST"]);
+    }
 }
