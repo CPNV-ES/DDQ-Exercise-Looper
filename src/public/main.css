@@ -52,19 +52,23 @@ body {
   font-size: 16px;
 }
 
-.primary-color {
+.bg-primary {
   background-color: #ebc25e;
 }
 
-.create-color {
+.bg-create {
   background-color: #8ee6e5;
 }
 
-.manage-color {
+.bg-manage {
   background-color: #a7db87;
 }
 
-.text-title {
+.bg-grey {
+  background: #cccccc;
+}
+
+.text-grey {
   color: #cccccc;
 }
 
@@ -72,73 +76,74 @@ body {
   color: #ffffff;
 }
 
-.row {
+.container-main {
   width: 60%;
   margin: auto;
-  padding: 1rem;
+}
+
+.container-rounded {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 1rem;
+  text-align: center;
+  color: #999999;
+}
+
+.row {
+  width: 100%;
+  margin: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding-top: 1rem;
 }
 
 .col-1 {
   width: calc(100% / 1);
-  padding: 1rem;
 }
 
 .col-2 {
   width: calc(100% / 2);
-  padding: 1rem;
 }
 
 .col-3 {
   width: calc(100% / 3);
-  padding: 1rem;
 }
 
 .col-4 {
   width: calc(100% / 4);
-  padding: 1rem;
 }
 
 .col-5 {
   width: calc(100% / 5);
-  padding: 1rem;
 }
 
 .col-6 {
   width: calc(100% / 6);
-  padding: 1rem;
 }
 
 .col-7 {
   width: calc(100% / 7);
-  padding: 1rem;
 }
 
 .col-8 {
   width: calc(100% / 8);
-  padding: 1rem;
 }
 
 .col-9 {
   width: calc(100% / 9);
-  padding: 1rem;
 }
 
 .col-10 {
   width: calc(100% / 10);
-  padding: 1rem;
 }
 
 .col-11 {
   width: calc(100% / 11);
-  padding: 1rem;
 }
 
 .col-12 {
   width: calc(100% / 12);
-  padding: 1rem;
 }
 
 .button {
@@ -148,9 +153,10 @@ body {
   text-align: center;
   line-height: 3rem;
   border-radius: 10px;
+  margin: 1rem;
 }
 .button:hover {
-  background-color: #cccccc;
+  background-color: #999999;
 }
 
 .home-header {
