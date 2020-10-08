@@ -14,7 +14,8 @@
         </div>
     </header>
 
-    <?= $content; ?>
-
+    <div class="container-main">
+        <?= $content; ?>
+    </div>
 </body>
 </html>
