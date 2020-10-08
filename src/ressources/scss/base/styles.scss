@@ -4,38 +4,26 @@ body {
     font-size: $font-size;
 }
 
-.primary-color {
+.bg-primary {
     background-color: $primary-color;
 }
 
-.create-color {
+.bg-create {
     background-color: $create-color;
 }
 
-.manage-color {
+.bg-manage {
     background-color: $manage-color;
 }
 
-.text-title {
+.bg-grey {
+    background: $grey-color;
+}
+
+.text-grey {
     color: $grey-color;
 }
 
 .text-white {
     color: $white-color;
-}
-
-.row {
-    width: 60%;
-    margin: auto;
-    padding: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-@for $i from 1 through 12 {
-    .col-#{$i} {
-        width: calc(100% / #{$i});
-        padding: 1rem;
-    }
 }
