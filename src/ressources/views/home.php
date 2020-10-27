@@ -1,6 +1,6 @@
 <?php
 
-$headerClass = 'home-header bg-primary';
+$headerClass = 'header-home bg-primary';
 
 $header = '
     <div class="text-white">

@@ -1,4 +1,4 @@
-.home-header {
+.header-home {
   height: 300px;
   width: 100%;
   text-align: center;
@@ -13,7 +13,7 @@
   }
 }
 
-.basic-header {
+.header-basic {
   height: 50px;
   width: 100%;
   
@@ -21,13 +21,5 @@
     height: 50px;
     width: 50px;
     margin-left: 20%;
-  }
-}
-
-@for $i from 1 through 12 {
-  .col-#{$i} {
-    @media (max-width: 1400px){
-      width: 100%;
-    }
   }
 }
