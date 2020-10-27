@@ -10,7 +10,7 @@ $header =
 $content =
     '<div class="row">
         <div class="col-3">
-            <a href="/exercises/take" class="button primary-color text-white">TAKE AN EXERCISE</a>
+            <a href="/exercises/answering" class="button primary-color text-white">TAKE AN EXERCISE</a>
         </div>
         <div class="col-3">
             <a href="/exercises/new" class="button create-color text-white">CREATE AN EXERCISE</a>

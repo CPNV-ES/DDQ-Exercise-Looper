@@ -4,9 +4,11 @@ require_once "../app/Router.php";
 $webrouter = new \Looper\App\Router();
 
 $webrouter->add("/", "HomeController::index");
-$webrouter->add("/exercises", "ExerciseController::index");
+$webrouter->add("/exercises", "ExerciseController::manage");
 $webrouter->add("/exercises/new", "ExerciseController::create");
-$webrouter->add("/exercises/take", "ExerciseController::take");
+$webrouter->add("/exercises/answering", "ExerciseController::listAnswering");
+$webrouter->add("/exercises/:exerciseId/take/new", "ExerciseController::takeNew");
+$webrouter->add("/exercises/:exerciseId/take/:takeId/edit", "ExerciseController::takeEdit");
 
 try {
     $webrouter->run();

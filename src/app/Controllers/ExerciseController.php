@@ -5,7 +5,7 @@ class ExerciseController {
     /**
      * This method gets all the exercises and displays it on the manage view
      */
-    public function index() {
+    public function manage() {
 
         // Todo : add the call method all() from the ExerciseModel
 
@@ -22,10 +22,10 @@ class ExerciseController {
     /**
      * This method gets all the exercises and displays it on the take view
      */
-    public function take() {
+    public function listAnswering() {
 
         // Todo : add the call method all() from the ExerciseModel
 
-        require_once "../ressources/views/exercises/take.php";
+        require_once "../ressources/views/exercises/listAnswering.php";
     }
 }
