@@ -21,35 +21,23 @@ class Model {
         }
     }
 
-    /**
+    /** 
      * Request to the database informations about all the registery related to the table model.
      * @return array $data
      */
     public function all(){
-        $req = "SELECT :column FROM :table";
-
+        $req = "SELECT :columns FROM {$this->table}";
         $tmpStr = '';
-
         $nbColumns = count($this->readables);
 
-        for($x = 1;$x <= $nbColumns;$x++){
-            $tmpStr .=  $x<$nbColumns?'?,':'?';
+        for($x = 0;$x < $nbColumns;$x++){
+            $tmpStr .=  $x+1<$nbColumns?$this->readables[$x].',':$this->readables[$x];
         }
-
-        str_replace(':column',$tmpStr,$req);
-
-        var_dump($req);        
-
-        $columns = $this->genReadableStr($this->readables);
+        $req = str_replace(':columns',$tmpStr,$req);
 
         $sth = $this->dbConnection->prepare($req);
 
-        $sth->bindValue(':colum', $columns);
-        $sth->bindValue(':table', $this->table);
-
-        $bool = $sth->execute();
-
-        var_dump($bool);
+        $sth->execute();
 
         return $sth->fetchAll();
     }
