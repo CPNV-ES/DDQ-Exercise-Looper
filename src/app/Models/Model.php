@@ -26,6 +26,14 @@ class Model {
      * @return array $data
      */
     public function all(){
+        $sth = $this->dbConnection->prepare($this->baseSelect());
+
+        $sth->execute();
+
+        return $sth->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    protected function baseSelect(){
         $req = "SELECT :columns FROM {$this->table}";
         $tmpStr = '';
         $nbColumns = count($this->readables);
@@ -34,11 +42,7 @@ class Model {
 
         $req = str_replace(':columns',$tmpStr,$req);
 
-        $sth = $this->dbConnection->prepare($req);
-
-        $sth->execute();
-
-        return $sth->fetchAll(PDO::FETCH_ASSOC);
+        return $req;
     }
 
     /**
@@ -73,8 +77,15 @@ class Model {
      * @param int $id
      * @return array $data
      */
-    public function find(){
-        //todo
+    public function find($id){
+        $req = $this->baseSelect();
+        $req .= ' WHERE '.$this->table.'.id = '.$id;
+
+        $sth = $this->dbConnection->prepare($req);
+
+        $sth->execute();
+
+        return $sth->fetchAll(PDO::FETCH_ASSOC);
     }
 
 
