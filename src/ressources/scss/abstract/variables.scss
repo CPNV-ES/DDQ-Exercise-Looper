@@ -1,11 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap");
 
 // Colors
-$primary-color: #ebc25e;
-$create-color: #8ee6e5;
-$manage-color: #a7db87;
-$grey-color: #cccccc;
-$white-color: #ffffff;
+$color-primary: #ebc25e;
+$color-create: #8ee6e5;
+$color-manage: #a7db87;
+$color-grey: #cccccc;
+$color-dark-grey: darken($color-grey, 20);
+$color-white: #ffffff;
 
 // Text
 $font-family: Balsamiq Sans;

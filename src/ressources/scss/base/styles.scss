@@ -4,45 +4,34 @@ body {
     font-size: $font-size;
 }
 
-.primary-color {
-    background-color: $primary-color;
+.bg-primary {
+    background-color: $color-primary;
 }
 
-.create-color {
-    background-color: $create-color;
+.bg-create {
+    background-color: $color-create;
 }
 
-.manage-color {
-    background-color: $manage-color;
+.bg-manage {
+    background-color: $color-manage;
 }
 
-.text-title {
-    color: $grey-color;
+.bg-grey {
+    background: $color-grey;
+}
+
+.text-grey {
+    color: $color-grey;
 }
 
 .text-white {
-    color: $white-color;
+    color: $color-white;
 }
 
-.row {
-    width: 60%;
-    margin: auto;
-    padding: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-@for $i from 1 through 12 {
-    .col-#{$i} {
-        width: calc(100% / #{$i});
-        padding: 1rem;
-    }
-}
-
-.title {
-    font-size: 30px;
-    margin-bottom: 15px;
+.page-title {
+    font-size: 3rem;
+    color: $color-dark-grey;
+    margin-top: 1rem;
 }
 
 .fieldContainer {
@@ -60,4 +49,8 @@ body {
     label {
         display: block;
     }
+
+.input-title {
+    color: $color-dark-grey;
+    margin-top: 1rem;
 }

@@ -8,13 +8,14 @@
 </head>
 <body>
     <header class="<?= $headerClass; ?>">
-        <div>
-            <a href="/"><img src="/images/logo.png"></a>
-            <?= $header; ?>
-        </div>
+        <a href="/">
+            <img src="/images/logo.png" alt="logo">
+        </a>
+        <?= $header; ?>
     </header>
 
-    <?= $content; ?>
-
+    <div class="container-main">
+        <?= $content; ?>
+    </div>
 </body>
 </html>

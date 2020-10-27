@@ -1,6 +1,6 @@
 <?php
 
-$headerClass = 'basic-header primary-color';
+$headerClass = 'header-basic bg-primary';
 
 $header = '<span>Exercise ' . $data["exerciseId"] . '</span>';
 
@@ -24,7 +24,7 @@ foreach($data["questionfields"] as $field) {
 $content =
     '<div class="row">
         <div class="col-1">
-            <p class="title">Your Take</p>'
+            <p class=".input-title">Your Take</p>'
 
             . (isset($data["takeId"]) ?
                 "<p>Bookmark this page, it's yours. You'll be able to come back later to finish.</p>" :

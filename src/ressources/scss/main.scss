@@ -2,8 +2,12 @@
 
 @import "base/reset";
 
-@import "base/styles.scss";
+@import "base/styles";
+
+@import "base/containers";
 
 @import "components/buttons";
+
+@import "components/forms";
 
 @import "layout/header";
