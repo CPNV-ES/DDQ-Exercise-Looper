@@ -76,6 +76,17 @@ body {
   color: #ffffff;
 }
 
+.page-title {
+  font-size: 3rem;
+  color: #cccccc;
+  margin-top: 1rem;
+}
+
+.input-title {
+  color: #cccccc;
+  margin-top: 1rem;
+}
+
 .container-main {
   width: 60%;
   margin: auto;

@@ -5,6 +5,11 @@ $headerClass = 'header-basic bg-create';
 $header = '<span class="text-white">New exercise</span>';
 
 $content = '
-    <h1 class="text-grey">New Exercise</h1>';
+    <div class="row">
+        <span class="page-title">New Exercise</span>
+    </div>
+    <div class="row">
+        <span class="input-title">Title</span>
+    </div>';
 
 require_once "../ressources/views/layout.php";
