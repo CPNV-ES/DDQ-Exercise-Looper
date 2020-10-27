@@ -16,11 +16,19 @@
 .basic-header {
   height: 50px;
   width: 100%;
+
+  div {
+    display: flex;
+    margin-left: 30%;
+  }
   
   img {
     height: 50px;
     width: 50px;
-    margin-left: 20%;
+  }
+
+  span {
+    margin: auto 20px;
   }
 }
 
