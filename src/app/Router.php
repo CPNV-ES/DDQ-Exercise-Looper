@@ -12,7 +12,7 @@ class Router {
         $method = isset($requestMethod) ? $requestMethod : $_SERVER["REQUEST_METHOD"];
         $requestUri = isset($requestUri) ? $requestUri : $_SERVER["REQUEST_URI"];
         $requestUri = rtrim($requestUri, "/");
-
+      
         foreach($this->routes as $route) {
             $pattern = "@^" . preg_replace('/\\\:[a-zA-Z0-9\_\-]+/', '([a-zA-Z0-9\-\_]+)', preg_quote($route['url'])) . "$@D";
             $args = [];

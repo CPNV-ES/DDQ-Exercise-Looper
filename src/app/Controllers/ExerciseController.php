@@ -28,4 +28,14 @@ class ExerciseController {
 
         require_once "../ressources/views/exercises/take.php";
     }
+
+    /**
+     * This method stores the created exercise
+     */
+    public function store() {
+
+        // Todo : insert data into database
+
+        header("Location: /exercises/1/questions-fields");
+    }
 }
