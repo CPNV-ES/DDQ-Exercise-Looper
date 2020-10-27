@@ -30,16 +30,15 @@ class Model {
         $tmpStr = '';
         $nbColumns = count($this->readables);
 
-        for($x = 0;$x < $nbColumns;$x++){
-            $tmpStr .=  $x+1<$nbColumns?$this->readables[$x].',':$this->readables[$x];
-        }
+        $tmpStr = $this->genReadableStr($this->readables);
+
         $req = str_replace(':columns',$tmpStr,$req);
 
         $sth = $this->dbConnection->prepare($req);
 
         $sth->execute();
 
-        return $sth->fetchAll();
+        return $sth->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**
@@ -52,8 +51,11 @@ class Model {
 
         $x = 0;
         foreach($readables as $readable){
-            if(is_array($readable)){
-                $tmpReadablesStr .= $readable['column']." as ". $readable['name'].","; 
+            if(is_array($readable) && $x < count($readables) - 1){
+                $tmpReadablesStr .= $readable[key($readable)]." as ". key($readable).",";
+            }
+            else if(is_array($readable)){
+                $tmpReadablesStr .= $readable[key($readable)]." as ". key($readable); 
             }
             else if($x < count($readables) - 1){
                 $tmpReadablesStr .= $readable.",";
