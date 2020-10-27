@@ -25,7 +25,6 @@ class ExerciseController {
     public function listAnswering() {
 
         // Todo : add the call method all() from the ExerciseModel
-
         require_once "../ressources/views/exercises/listAnswering.php";
     }
 

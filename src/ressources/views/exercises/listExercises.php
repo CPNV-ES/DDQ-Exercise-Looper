@@ -1,7 +1,7 @@
 <?php
 
 
-$headerClass = 'header-basic bg-primary';
+$headerClass = 'basic-header bg-primary';
 
 $header = '';
 $content = '
