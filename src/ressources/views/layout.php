@@ -8,10 +8,10 @@
 </head>
 <body>
     <header class="<?= $headerClass; ?>">
-        <div>
-            <a href="/"><img src="/images/logo.png"></a>
-            <?= $header; ?>
-        </div>
+        <a href="/">
+            <img src="/images/logo.png" alt="logo">
+        </a>
+        <?= $header; ?>
     </header>
 
     <div class="container-main">
