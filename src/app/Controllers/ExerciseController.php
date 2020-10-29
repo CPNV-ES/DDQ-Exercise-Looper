@@ -81,7 +81,7 @@ class ExerciseController {
             ]
         ];
 
-        require_once "../ressources/views/exercises/listAnswering.php";
+        require_once "../ressources/views/exercises/take.php";
     }
 
     /**
