@@ -36,6 +36,25 @@ class RouterTest extends TestCase {
         $router->run("/test1/1234/", "GET");
     }
 
+    public function test_handlesQueryString() {
+        $router = new \Looper\App\Router();
+        $router->add("/test", function() {
+            $this->assertEquals("world", $_GET["hello"]);
+        }, "GET");
+
+        $router->run("/test?hello=world&test=test2", "GET");
+    }
+
+    public function test_handlesEmptyQueryString() {
+        $router = new \Looper\App\Router();
+        $router->add("/test", function() {
+            $this->assertTrue(true);
+        }, "GET");
+
+        $router->run("/test/?", "GET");
+        $router->run("/test?", "GET");
+    }
+
     public function test_throwsWithUnknownRoute() {
         $router = new \Looper\App\Router();
         $this->expectException(\UnexpectedValueException::class);
