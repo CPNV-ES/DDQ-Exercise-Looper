@@ -38,11 +38,3 @@
     margin: auto 20px;
   }
 }
-
-@for $i from 1 through 12 {
-  .col-#{$i} {
-    @media (max-width: 1400px){
-      width: 100%;
-    }
-  }
-}

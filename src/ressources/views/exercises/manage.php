@@ -2,12 +2,26 @@
 
 $headerClass = 'header-basic bg-manage';
 
-$header = '<span class="text-white">New exercise</span>';
+$header = '';
 
 $content = '
     <div class="row">
         <div class="col-3">
-        <span class="page-title">Building</span>
+            <span class="page-title">Building</span>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>test</td>
+                        <td><a href="#"><img src="images/bar-chart.svg"></a></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <div class="col-3">
             <span class="page-title">Answering</span>
