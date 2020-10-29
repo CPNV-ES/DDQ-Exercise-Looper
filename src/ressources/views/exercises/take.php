@@ -11,11 +11,11 @@ foreach($data["questionfields"] as $field) {
     $_fields .= "<label for='{$field['id']}'>{$field['label']}</label>";
     switch($field["valueType"]) {
         case "Single line text":
-            $_fields .= "<input id='{$field['id']}' type='text' value='{$_val}' />";
+            $_fields .= "<input class='input-text'  id='{$field['id']}' type='text' value='{$_val}' />";
             break;
         case "List of Multi-line text":
         case "List of single lines":
-            $_fields .= "<textarea id='{$field['id']}' rows='5'>{$_val}</textarea>";
+            $_fields .= "<textarea class='input-text' id='{$field['id']}' rows='5'>{$_val}</textarea>";
             break;
     }
     $_fields .= "</div>";
@@ -24,7 +24,8 @@ foreach($data["questionfields"] as $field) {
 $content =
     '<div class="row">
         <div class="col-1">
-            <p class=".input-title">Your Take</p>'
+        <form>
+            <p class="page-title">Your Take</p>'
 
             . (isset($data["takeId"]) ?
                 "<p>Bookmark this page, it's yours. You'll be able to come back later to finish.</p>" :
@@ -32,8 +33,9 @@ $content =
 
             . $_fields
 
-    .' <input type="submit" />
-       </div>
+            .'<div class="col-5"> <input class="button bg-primary text-white" type="submit" /> </div>
+        </form>
+        </div>
     </div>
     ';
 

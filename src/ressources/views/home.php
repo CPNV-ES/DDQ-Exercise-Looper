@@ -9,15 +9,15 @@ $header = '
 
 $content = '
     <div class="row">
-            <div class="col-3">
-                <a href="/exercises/answering" class="button bg-primary text-white">Take an exercise</a>
-            </div>
-            <div class="col-3">
-                <a href="/exercises/new" class="button bg-create text-white">Create an exercise</a>
-            </div>
-            <div class="col-3">
-                <a href="/exercises" class="button bg-manage text-white">Manage an exercise</a>
-            </div>
-        </div>';
+        <div class="col-3">
+            <a href="/exercises/listAnswering" class="button bg-primary text-white">Take an exercise</a>
+        </div>
+        <div class="col-3">
+            <a href="/exercises/new" class="button bg-create text-white">Create an exercise</a>
+        </div>
+        <div class="col-3">
+            <a href="/exercises" class="button bg-manage text-white">Manage an exercise</a>
+        </div>
+    </div>';
 
 require_once "../ressources/views/layout.php";
