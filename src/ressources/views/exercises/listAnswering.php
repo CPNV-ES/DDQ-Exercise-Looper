@@ -1,6 +1,5 @@
 <?php
 
-
 $headerClass = 'header-basic bg-primary';
 
 $header = '';

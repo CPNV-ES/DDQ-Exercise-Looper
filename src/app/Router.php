@@ -11,8 +11,10 @@ class Router {
     public function run($requestUri = null, $requestMethod = null) {
         $method = isset($requestMethod) ? $requestMethod : $_SERVER["REQUEST_METHOD"];
         $requestUri = isset($requestUri) ? $requestUri : $_SERVER["REQUEST_URI"];
-        $requestUri = rtrim($requestUri, "/");
-      
+        $queryParts = parse_url($requestUri);
+        parse_str($queryParts["query"] ?? "", $_GET);
+        $requestUri = rtrim(rtrim($queryParts["path"], "?"), "/"); // remove the query string and trailing question mark and slashes
+
         foreach($this->routes as $route) {
             $pattern = "@^" . preg_replace('/\\\:[a-zA-Z0-9\_\-]+/', '([a-zA-Z0-9\-\_]+)', preg_quote($route['url'])) . "$@D";
             $args = [];
@@ -21,8 +23,8 @@ class Router {
 
                 $actionType = gettype($route["action"]);
 
-                if($actionType == "string") {
-                    if( strpos($route["action"], "::") == false) {
+                if($actionType == "string") {   // Action is controller's action
+                    if(strpos($route["action"], "::") == false) {
                         throw new \InvalidArgumentException("The action string is malformed");
                     }
 
@@ -44,10 +46,10 @@ class Router {
 
                     call_user_func_array([$controller, $actionName], $args);
                 }
-                elseif($actionType == "object" && is_callable($route["action"])) {
+                elseif($actionType == "object" && is_callable($route["action"])) {  // Action is anonymous function
                     call_user_func_array($route["action"], $args);
                 }
-                else {
+                else {  // Invalid action type
                     throw new \UnexpectedValueException("No matching routes were found for request uri: " . $requestUri);
                 }
 
