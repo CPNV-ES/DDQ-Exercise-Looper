@@ -8,7 +8,7 @@ $content = '
     <div class="row">
         <div class="col-3">
             <span class="page-title">Building</span>
-            <table>
+            <table class="records">
                 <thead>
                     <tr>
                         <th>Title</th>
@@ -18,7 +18,7 @@ $content = '
                 <tbody>
                     <tr>
                         <td>test</td>
-                        <td><a href="#"><img src="images/bar-chart.svg"></a></td>
+                        <td><a href="#"><i class="far fa-chart-bar"></i></a></td>
                     </tr>
                 </tbody>
             </table>

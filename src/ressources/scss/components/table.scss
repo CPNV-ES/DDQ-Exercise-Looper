@@ -23,9 +23,11 @@ table {
       width: 20px;
       color: $color-primary;
     }
-
-    //&:nth-child(2) {
-    //  text-align: end;
-    //}
   }
+}
+
+.records {
+    td:last-child {
+      text-align: end;
+    }
 }
