@@ -140,4 +140,32 @@ class ExerciseController {
         ];
         require_once "../ressources/views/exercises/exerciseResults.php";
     }
+
+    public function takeDisplay($exerciseId, $takeId) {
+        $data = [
+            "exerciseId" => $exerciseId,
+            "exerciseTitle" => "2020-01-01 2020-08-25 09:03:43 UTC",
+            "takeId" => $takeId,
+            // TODO : THIS IS TEST DATA, GET DATA FROM MODEL (AND MAYBE DIRECTLY PASS MODEL RATHER THAN A DICTIONARY)!
+            "questionsAnswers" => [
+                [
+                    "id" => 101,
+                    "question" => "A. Lorem ipsum dolor sit amet?",
+                    "answer" => "Oui"
+                ],
+                [
+                    "id" => 103,
+                    "question" => "C. Ut enim ad minim veniam, aute irure dolor ?",
+                    "answer" => "Lorem ipsum dolor sit amet\nSunt in culpa qui officia",
+                ],
+                [
+                    "id" => 102,
+                    "question" => "B. Sunt in culpa qui officia?",
+                    "answer" => "Non.",
+                ]
+            ]
+        ];
+
+        require_once "../ressources/views/exercises/takeDisplay.php";
+    } 
 }
