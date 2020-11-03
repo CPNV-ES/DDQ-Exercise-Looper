@@ -1,5 +1,5 @@
 %table-properties {
-  padding: 1rem 0;
+  padding: 1rem 1rem;
   border-bottom: 1px solid $color-grey;
 }
 
@@ -24,8 +24,8 @@ table {
       color: $color-primary;
     }
 
-    &:nth-child(2) {
-      text-align: end;
-    }
+    //&:nth-child(2) {
+    //  text-align: end;
+    //}
   }
 }

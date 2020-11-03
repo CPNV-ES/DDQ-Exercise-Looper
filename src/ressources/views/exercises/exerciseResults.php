@@ -16,6 +16,12 @@ foreach($data["questions"] as $questionId => $questionTitle) {
     $_table .= "<th><a href='/exercices/{$data['exerciseId']}/results/{$questionId}'>{$questionTitle}</a></th>";
 }
 
+$icons = [
+    0 => "fas fa-times text-red",
+    1 => "fas fa-check text-green",
+    2 => "fas fa-check-double text-green"
+];
+
 foreach($data["takes"] as $takeId => $takeData) {
     // Sort answers by id
     ksort($takeData["questionsTakes"]);
@@ -23,7 +29,7 @@ foreach($data["takes"] as $takeId => $takeData) {
     $_table .= "<tr>";
     $_table .= "<td><a href='/exercices/{$data['exerciseId']}/take/{$takeId}'> {$takeData['title']} </a></td>";
     foreach($takeData["questionsTakes"] as $questionsTakeId => $questionTakeFulfillment) {
-        $_table .= "<td>{$questionTakeFulfillment}</td>";
+        $_table .= "<td><i class='{$icons[$questionTakeFulfillment]}'></i></td>";
     }
 
     $_table .= "</tr>";
