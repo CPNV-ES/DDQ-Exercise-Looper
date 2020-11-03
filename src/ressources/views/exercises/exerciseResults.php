@@ -13,7 +13,7 @@ ksort($data["questions"]);
 ksort($data["takes"]);
 
 foreach($data["questions"] as $questionId => $questionTitle) {
-    $_table .= "<th><a href='/exercices/{$data['exerciseId']}/results/{$questionId}'>{$questionTitle}</a></th>";
+    $_table .= "<th><a href='/exercises/{$data['exerciseId']}/results/{$questionId}'>{$questionTitle}</a></th>";
 }
 
 $icons = [
@@ -27,7 +27,7 @@ foreach($data["takes"] as $takeId => $takeData) {
     ksort($takeData["questionsTakes"]);
 
     $_table .= "<tr>";
-    $_table .= "<td><a href='/exercices/{$data['exerciseId']}/take/{$takeId}'> {$takeData['title']} </a></td>";
+    $_table .= "<td><a href='/exercises/{$data['exerciseId']}/take/{$takeId}'> {$takeData['title']} </a></td>";
     foreach($takeData["questionsTakes"] as $questionsTakeId => $questionTakeFulfillment) {
         $_table .= "<td><i class='{$icons[$questionTakeFulfillment]}'></i></td>";
     }
