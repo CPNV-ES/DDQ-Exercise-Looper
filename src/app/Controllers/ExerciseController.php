@@ -144,8 +144,9 @@ class ExerciseController {
     public function takeDisplay($exerciseId, $takeId) {
         $data = [
             "exerciseId" => $exerciseId,
-            "exerciseTitle" => "2020-01-01 2020-08-25 09:03:43 UTC",
+            "exerciseTitle" => "Le test de votre vie",
             "takeId" => $takeId,
+            "takeTitle" => "2020-01-01 2020-08-25 09:03:43 UTC",
             // TODO : THIS IS TEST DATA, GET DATA FROM MODEL (AND MAYBE DIRECTLY PASS MODEL RATHER THAN A DICTIONARY)!
             "questionsAnswers" => [
                 [
@@ -167,5 +168,34 @@ class ExerciseController {
         ];
 
         require_once "../ressources/views/exercises/takeDisplay.php";
+    } 
+
+    public function questionResults($exerciseId, $questionId) {
+        $data = [
+            "exerciseId" => $exerciseId,
+            "exerciseTitle" => "Le test de votre vie",
+            "questionId" => $questionId,
+            "questionTitle" => "A. Lorem ipsum dolor sit amet?",
+            // TODO : THIS IS TEST DATA, GET DATA FROM MODEL (AND MAYBE DIRECTLY PASS MODEL RATHER THAN A DICTIONARY)!
+            "takes" => [
+                [
+                    "id" => 101,
+                    "title" => "2020-01-01 2020-08-25 09:03:43 UTC",
+                    "answer" => "Oui"
+                ],
+                [
+                    "id" => 103,
+                    "title" => "2020-01-01 2020-08-25 09:15:45 UTC",
+                    "answer" => "Lorem ipsum dolor sit amet\nSunt in culpa qui officia",
+                ],
+                [
+                    "id" => 102,
+                    "title" => "2020-01-01 2020-08-25 09:05:43 UTC",
+                    "answer" => "Non.",
+                ]
+            ]
+        ];
+
+        require_once "../ressources/views/exercises/questionResults.php";
     } 
 }
