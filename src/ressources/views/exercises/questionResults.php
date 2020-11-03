@@ -1,6 +1,6 @@
 <?php
 
-$headerClass = 'header-basic bg-primary';
+$headerClass = 'header-basic bg-manage';
 
 $header = "<span><a href='/exercises/{$data['exerciseId']}/results'>Exercise {$data['exerciseTitle']}</a></span>";
 

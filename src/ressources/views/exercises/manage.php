@@ -18,7 +18,7 @@ $content = '
                 <tbody>
                     <tr>
                         <td>test</td>
-                        <td><a href="#"><i class="far fa-chart-bar"></i></a></td>
+                        <td><a href="/exercises/123/results"><i class="far fa-chart-bar"></i></a></td>
                     </tr>
                 </tbody>
             </table>
