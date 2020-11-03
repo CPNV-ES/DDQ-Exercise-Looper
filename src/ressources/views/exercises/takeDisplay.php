@@ -2,7 +2,7 @@
 
 $headerClass = 'header-basic bg-primary';
 
-$header = "<span><a href='/exercises/{$data['exerciseId']}/results'>Exercise {$data['exerciseId']}</a></span>";
+$header = "<span><a href='/exercises/{$data['exerciseId']}/results'>Exercise {$data['exerciseTitle']}</a></span>";
 
 $questions = "";
 
@@ -14,7 +14,7 @@ foreach($data["questionsAnswers"] as $qa) {
 $content = '
     <div class="row">
         <div class="col-1">
-            <p class="page-title">' . $data['exerciseTitle'] . '</p>
+            <p class="page-title">' . $data['takeTitle'] . '</p>
             <dl>
                 ' . $questions . '
             </dl>
