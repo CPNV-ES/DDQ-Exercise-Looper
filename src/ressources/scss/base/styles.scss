@@ -28,6 +28,14 @@ body {
     color: $color-white;
 }
 
+.text-red {
+    color: $color-red;
+}
+
+.text-green {
+    color: $color-green;
+}
+
 .page-title {
     font-size: 3rem;
     color: $color-dark-grey;
@@ -54,4 +62,10 @@ body {
         color: $color-dark-grey;
         margin-top: 1rem;
     }
+}
+
+dt {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    margin-top: 15px;
 }

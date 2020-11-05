@@ -10,6 +10,9 @@ $webrouter->add("/exercises/new", "ExerciseController::store", "POST");
 $webrouter->add("/exercises/answering", "ExerciseController::listAnswering");
 $webrouter->add("/exercises/:exerciseId/take/new", "ExerciseController::takeNew");
 $webrouter->add("/exercises/:exerciseId/take/:takeId/edit", "ExerciseController::takeEdit");
+$webrouter->add("/exercises/:exerciseId/take/:takeId", "ExerciseController::takeDisplay");
+$webrouter->add("/exercises/:exerciseId/results", "ExerciseController::exerciseResults");
+$webrouter->add("/exercises/:exerciseId/results/:questionId", "ExerciseController::questionResults");
 $webrouter->add("/exercises/listAnswering", "ExerciseController::listAnswering");
 $webrouter->add("/exercises/:id/questions-fields", "QuestionsController::index");
 

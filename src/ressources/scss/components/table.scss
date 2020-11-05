@@ -1,0 +1,33 @@
+%table-properties {
+  padding: 1rem 1rem;
+  border-bottom: 1px solid $color-grey;
+}
+
+table {
+  width: 100%;
+  margin-top: 2rem;
+
+  th {
+    @extend %table-properties;
+
+    color: $color-dark-grey;
+    text-align: start;
+
+  }
+
+  td {
+    @extend %table-properties;
+
+    img {
+      height: 20px;
+      width: 20px;
+      color: $color-primary;
+    }
+  }
+}
+
+.records {
+    td:last-child {
+      text-align: end;
+    }
+}

@@ -3,3 +3,5 @@
 .vscode/
 src/ressources/css/*
 app/*.credentials.php
+*.css
+*.css.map
