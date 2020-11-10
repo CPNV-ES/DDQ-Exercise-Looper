@@ -19,11 +19,6 @@ $webrouter->add("/exercises/:id/questions-fields", "QuestionsController::index")
 try {
     $webrouter->run();
 }
-catch(InvalidArgumentException $ex) {
-    // TODO: handle these exceptions better
-    echo "Invalid route: " . $ex;
-}
-catch(UnexpectedValueException $ex) {
-    // TODO: handle these exceptions better
-    echo "No route found: " . $ex;
+catch(InvalidArgumentException | UnexpectedValueException $ex) {
+    require_once "../ressources/views/404.php";
 }
