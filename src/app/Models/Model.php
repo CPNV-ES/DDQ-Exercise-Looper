@@ -129,7 +129,6 @@ class Model {
      * @param array $updateColumns
      */
     public function update($id, $data, $updateColumns = null){
-        $columns = [];
         $sql = "UPDATE ".$this->table." SET ";
         if(!empty($updateColumns)){
             foreach($updateColumns as $key => $column) {
@@ -154,7 +153,15 @@ class Model {
      * @return bool
      */
 
-    public function delete(){
-        //todo
+    public function delete($id){
+        $sql = "DELETE FROM ".$this->table." WHERE id = ?";
+
+        $sth = $this->dbConnection->prepare($sql);
+
+        $state = $sth->execute([$id]);
+
+        var_dump($sth->errorInfo());
+
+        return $state;
     }
 }
