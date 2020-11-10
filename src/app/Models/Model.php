@@ -102,20 +102,50 @@ class Model {
 
     /**
      * Insert into the database new registery informations.
-     * @param array
-     * @return  
+     * @param array $data
+     * @return bool $reqStat
      */
-    public function insert(){
-        //todo
+    public function insert($data){
+        $sql = "INSERT INTO ".$this->table." (:columns) VALUES (:writables)";
+        $sql = str_replace(":columns",$this->genReadableStr($this->writables),$sql);
+
+        $nbWritables = $this->writables;
+
+        $abstractArgumentArray = array_fill(0,count($nbWritables), "?");
+        $abstractArgumentArray = implode(", ",$abstractArgumentArray);
+        $sql = str_replace(":writables",$abstractArgumentArray,$sql);
+
+        $sth = $this->dbConnection->prepare($sql);
+
+        $state = $sth->execute($data);
+
+        return $state;
     }
 
 
     /**
      * Update a existing registery informations in the database
-     * 
+     * @param array $data
+     * @param array $updateColumns
      */
-    public function update(){
-        //todo
+    public function update($id, $data, $updateColumns = null){
+        $columns = [];
+        $sql = "UPDATE ".$this->table." SET ";
+        if(!empty($updateColumns)){
+            foreach($updateColumns as $key => $column) {
+                if(array_search($column, $this->writables) !== false){
+                    $sql .= $column . " = ?" . (count($updateColumns)-1>$key ? ", " : " ");
+                }
+            }
+        }
+
+        $sql .= "WHERE id = ".$id;
+
+        $sth = $this->dbConnection->prepare($sql);
+
+        $state = $sth->execute($data);
+
+        return $state;
     }
 
     /**
