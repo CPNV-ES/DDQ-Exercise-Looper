@@ -5,3 +5,5 @@ src/ressources/css/*
 app/*.credentials.php
 *.css
 *.css.map
+docs/sources/*.bak
+docs/sources/*.bak
