@@ -1,19 +1,26 @@
 <?php
 
+require_once "../Db.php";
+
 class Model {
 
     protected $table = '';
-    public $readables = []; //Fields the model can read
-    protected $writables = []; //Fields the model can 
+    protected $fk = [];
+    protected $readables = []; //Fields the model can read
+    protected $writables = []; //Fields the model can write
     protected $dbConnection;
 
     /**
      * At the initalisazion the model will take a database connection as argument
      * @param PDO $dbConnection
      */
-    public function __construct($dbConnection, $debug = false){
-        $this->dbConnection = $dbConnection;
-
+    public function __construct($dbConnection = null, $debug = false){
+        if(isset($dbConnection)){
+            $this->dbConnection = $dbConnection;
+        }
+        else {
+            $this->dbConnection = DB::getConnection();
+        }
         if($debug){
             $this->table = 'test';
             $this->readables = ['name','firstname','birthday'];
@@ -21,7 +28,7 @@ class Model {
         }
     }
 
-    /** 
+    /**
      * Request to the database informations about all the registery related to the table model.
      * @return array $data
      */
@@ -48,7 +55,7 @@ class Model {
     /**
      * Convert an array to a string for sql request
      * @param array $readables
-     * @return string $readablesStr 
+     * @return string $readablesStr
      */
     protected function genReadableStr($readables){
         $tmpReadablesStr = '';
