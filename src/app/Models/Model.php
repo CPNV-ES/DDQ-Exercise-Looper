@@ -111,38 +111,6 @@ class Model {
         return $sth->fetchAll(PDO::FETCH_ASSOC);
     }
 
-
-    /**
-     * Request to the database informations about the restery who are related to another table.
-     * @param int $idOfWhatYouWant
-     * @param int $idOfWhatIsRelated
-     * @return void
-     */
-    public function findRelatedTo($idOfWhatYouWant,$idOfWhatIsRelated){
-        $sql = genReadableStr($this->readables);
-
-        try{
-            $foreignKeys = $this->foreignKeys;
-
-            if(isset($foreignKeys)){
-                foreach($foreignKeys as $index => $fk){
-                    list($table,$fields) = split(".",$fk);
-                    if(empty($table) || empty($fields)) throw new \LengthException("You haven't specified the table");
-
-                    $sql .= ' INNER JOIN ' .  $table . ' ON '. $this->table . '.' . $index . ' = ' . $table . '.' . $fields;
-                }
-            }
-            else{
-                
-            }
-        }
-        catch(LengthException $ex){
-            echo 'The foreign table hasn\'t be specified : '. $ex;
-        }
-
-    }
-
-
     /**
      * Insert into the database new registery informations.
      * @param array $data
