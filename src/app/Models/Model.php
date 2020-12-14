@@ -1,11 +1,11 @@
 <?php
 
-require_once "../Db.php";
+require_once dirname(__DIR__,1) . "/Db.php";
 
 class Model {
 
     protected $table = '';
-    protected $fk = [];
+    protected $foreignKeys = [];
     protected $readables = []; //Fields the model can read
     protected $writables = []; //Fields the model can write
     protected $dbConnection;
@@ -19,7 +19,7 @@ class Model {
             $this->dbConnection = $dbConnection;
         }
         else {
-            $this->dbConnection = DB::getConnection();
+            $this->dbConnection = Db::getConnection();
         }
         if($debug){
             $this->table = 'test';
@@ -48,6 +48,22 @@ class Model {
         $tmpStr = $this->genReadableStr($this->readables);
 
         $req = str_replace(':columns',$tmpStr,$req);
+
+        if(isset($this->foreignKeys)){
+            $foreignKeys = $this->foreignKeys;
+
+            $join = '';
+
+            foreach($foreignKeys as $fkey){
+                $fIndex = array_values($fkey)[0]; // extract the table from the index given exemple "answers.id" will get answers who is the table
+                $table = explode('.',$fIndex)[0];
+
+                $fColumn = array_keys($fkey)[0];
+
+                $join .= ' INNER JOIN ' . $table . ' ON '. $fColumn . ' = ' . $fIndex;
+            }
+            $req .= $join;
+        }
 
         return $req;
     }
@@ -103,7 +119,27 @@ class Model {
      * @return void
      */
     public function findRelatedTo($idOfWhatYouWant,$idOfWhatIsRelated){
-        //todo
+        $sql = genReadableStr($this->readables);
+
+        try{
+            $foreignKeys = $this->foreignKeys;
+
+            if(isset($foreignKeys)){
+                foreach($foreignKeys as $index => $fk){
+                    list($table,$fields) = split(".",$fk);
+                    if(empty($table) || empty($fields)) throw new \LengthException("You haven't specified the table");
+
+                    $sql .= ' INNER JOIN ' .  $table . ' ON '. $this->table . '.' . $index . ' = ' . $table . '.' . $fields;
+                }
+            }
+            else{
+                
+            }
+        }
+        catch(LengthException $ex){
+            echo 'The foreign table hasn\'t be specified : '. $ex;
+        }
+
     }
 
 
