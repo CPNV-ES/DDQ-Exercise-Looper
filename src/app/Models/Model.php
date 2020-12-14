@@ -1,19 +1,26 @@
 <?php
 
+require_once dirname(__DIR__,1) . "/Db.php";
+
 class Model {
 
     protected $table = '';
-    public $readables = []; //Fields the model can read
-    protected $writables = []; //Fields the model can 
+    protected $foreignKeys = [];
+    protected $readables = []; //Fields the model can read
+    protected $writables = []; //Fields the model can write
     protected $dbConnection;
 
     /**
      * At the initalisazion the model will take a database connection as argument
      * @param PDO $dbConnection
      */
-    public function __construct($dbConnection, $debug = false){
-        $this->dbConnection = $dbConnection;
-
+    public function __construct($dbConnection = null, $debug = false){
+        if(isset($dbConnection)){
+            $this->dbConnection = $dbConnection;
+        }
+        else {
+            $this->dbConnection = Db::getConnection();
+        }
         if($debug){
             $this->table = 'test';
             $this->readables = ['name','firstname','birthday'];
@@ -21,7 +28,7 @@ class Model {
         }
     }
 
-    /** 
+    /**
      * Request to the database informations about all the registery related to the table model.
      * @return array $data
      */
@@ -42,13 +49,29 @@ class Model {
 
         $req = str_replace(':columns',$tmpStr,$req);
 
+        if(isset($this->foreignKeys)){
+            $foreignKeys = $this->foreignKeys;
+
+            $join = '';
+
+            foreach($foreignKeys as $fkey){
+                $fIndex = array_values($fkey)[0]; // extract the table from the index given exemple "answers.id" will get answers who is the table
+                $table = explode('.',$fIndex)[0];
+
+                $fColumn = array_keys($fkey)[0];
+
+                $join .= ' INNER JOIN ' . $table . ' ON '. $fColumn . ' = ' . $fIndex;
+            }
+            $req .= $join;
+        }
+
         return $req;
     }
 
     /**
      * Convert an array to a string for sql request
      * @param array $readables
-     * @return string $readablesStr 
+     * @return string $readablesStr
      */
     protected function genReadableStr($readables){
         $tmpReadablesStr = '';
@@ -87,18 +110,6 @@ class Model {
 
         return $sth->fetchAll(PDO::FETCH_ASSOC);
     }
-
-
-    /**
-     * Request to the database informations about the restery who are related to another table.
-     * @param int $idOfWhatYouWant
-     * @param int $idOfWhatIsRelated
-     * @return void
-     */
-    public function findRelatedTo($idOfWhatYouWant,$idOfWhatIsRelated){
-        //todo
-    }
-
 
     /**
      * Insert into the database new registery informations.
