@@ -13,7 +13,9 @@ foreach($data["questionfields"] as $field) {
         case "Single line text":
             $_fields .= "<input class='input-text'  id='{$field['id']}' type='text' value='{$_val}' />";
             break;
-        case "List of Multi-line text":
+        case "Multi-line text":
+            $_fields .= "<textarea class='input-text' id='{$field['id']}' rows='5'>{$_val}</textarea>";
+            break;
         case "List of single lines":
             $_fields .= "<textarea class='input-text' id='{$field['id']}' rows='5'>{$_val}</textarea>";
             break;

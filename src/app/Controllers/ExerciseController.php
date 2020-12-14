@@ -1,5 +1,10 @@
 <?php
 
+require_once dirname(__DIR__,1).'/Models/Exercise.php';
+require_once dirname(__DIR__,1).'/Models/QuestionField.php';
+require_once dirname(__DIR__,1).'/Models/Fulfillment.php';
+require_once dirname(__DIR__,1).'/Models/Take.php';
+
 class ExerciseController {
 
     /**
@@ -7,7 +12,8 @@ class ExerciseController {
      */
     public function manage() {
 
-        // Todo : add the call method all() from the ExerciseModel
+        $exerciseModel = new Exercise();
+        $exercises = $exerciseModel->all();
 
         require_once "../ressources/views/exercises/manage.php";
     }
@@ -23,32 +29,20 @@ class ExerciseController {
      * This method gets all the exercises and displays it on the take view
      */
     public function listAnswering() {
+        $exerciseModel = new Exercise();
+        $exercises = $exerciseModel->all();
 
-        // Todo : add the call method all() from the ExerciseModel
         require_once "../ressources/views/exercises/listAnswering.php";
     }
 
     public function takeNew($exerciseId) {
+        $questionFieldModel = new QuestionField();
+
+        $questions = $questionFieldModel->findByExercise($exerciseId);
+
         $data = [
             "exerciseId" => $exerciseId,
-            // TODO : THIS IS TEST DATA, GET DATA FROM MODEL (AND MAYBE DIRECTLY PASS MODEL RATHER THAN A DICTIONARY)!
-            "questionfields" => [
-                [
-                    "id" => 1,
-                    "label" => "Test1",
-                    "valueType" => "Single line text",
-                ],
-                [
-                    "id" => 2,
-                    "label" => "Test2",
-                    "valueType" => "List of single lines"
-                ],
-                [
-                    "id" => 3,
-                    "label" => "Test3",
-                    "valueType" => "List of Multi-line text"
-                ]
-            ]
+            "questionfields" => $questions
         ];
 
         require_once "../ressources/views/exercises/take.php";
@@ -89,20 +83,31 @@ class ExerciseController {
      */
     public function store() {
 
-        // Todo : insert data into database
+        $exerciseModel = new Exercise();
 
-        header("Location: /exercises/1/questions-fields");
+        $data = ['title' => $_POST['title'], 'state' => 'Building'];
+
+        $lastId = $exerciseModel->insert($data);
+
+        if($lastId) {
+            header("Location: /exercises/".$lastId."/questions-fields");
+        }
+        else {
+            header("Location: /exercises/");
+        }
     }
 
     public function exerciseResults($exerciseId) {
+        $questionFieldModel = new QuestionField();
+        $questions = $questionFieldModel->findByExercise($exerciseId);
+
+        $fulFillmentModel = new Fulfillment();
+        $fullFillments = $fulFillmentModel->findByExercise($exerciseId);
+
         $data = [
             "exerciseId" => $exerciseId,
             // TODO : THIS IS TEST DATA, GET DATA FROM MODEL (AND MAYBE DIRECTLY PASS MODEL RATHER THAN A DICTIONARY)!
-            "questions" => [
-                100 => "A. Lorem ipsum dolor sit amet?",
-                102 => "C. Ut enim ad minim veniam, aute irure dolor ?",
-                101 => "B. Sunt in culpa qui officia?",
-            ],
+            "questions" => $questions,
             "takes" => [
                 500 => [
                     "title" => "2020-08-25 09:01:22 UTC",

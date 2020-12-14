@@ -78,6 +78,9 @@ class Model {
 
         $x = 0;
         foreach($readables as $readable){
+            if(strpos($readable,'.') == false){
+                $readable = $this->table.'.'.$readable;
+            }
             if(is_array($readable) && $x < count($readables) - 1){
                 $tmpReadablesStr .= $readable[key($readable)]." as ". key($readable).",";
             }
@@ -111,26 +114,46 @@ class Model {
         return $sth->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function findByExercise($id){
+        $req = $this->baseSelect();
+        $req .= ' WHERE exercisesId = '.$id;
+
+        $sth = $this->dbConnection->prepare($req);
+
+        $sth->execute();
+
+        return $sth->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     /**
      * Insert into the database new registery informations.
      * @param array $data
-     * @return bool $reqStat
+     * @return int $lastId
      */
     public function insert($data){
-        $sql = "INSERT INTO ".$this->table." (:columns) VALUES (:writables)";
-        $sql = str_replace(":columns",$this->genReadableStr($this->writables),$sql);
 
-        $nbWritables = $this->writables;
+        $writable = $this->writables;
+
+        if(!in_array('updatedAt',$data)) $writable = array_diff($writable, ['updatedAt']);
+
+        $req = "INSERT INTO ".$this->table." (:columns) VALUES (:writables)";
+        $req = str_replace(":columns",$this->genReadableStr($writable),$req);
+
+        $nbWritables = $writable;
 
         $abstractArgumentArray = array_fill(0,count($nbWritables), "?");
         $abstractArgumentArray = implode(", ",$abstractArgumentArray);
-        $sql = str_replace(":writables",$abstractArgumentArray,$sql);
+        $req = str_replace(":writables",$abstractArgumentArray,$req);
 
-        $sth = $this->dbConnection->prepare($sql);
+        $sth = $this->dbConnection->prepare($req);
 
-        $state = $sth->execute($data);
+        $state = $sth->execute(array_values($data));
 
-        return $state;
+        $lastId = false;
+
+        if($state) $lastId = $this->dbConnection->lastInsertId();
+
+        return $lastId;
     }
 
 

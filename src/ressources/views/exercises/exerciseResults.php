@@ -12,8 +12,8 @@ ksort($data["questions"]);
 // Sort takes by id
 ksort($data["takes"]);
 
-foreach($data["questions"] as $questionId => $questionTitle) {
-    $_table .= "<th><a href='/exercises/{$data['exerciseId']}/results/{$questionId}'>{$questionTitle}</a></th>";
+foreach($data["questions"] as $question) {
+    $_table .= "<th><a href='/exercises/{$data['exerciseId']}/results/{$question['id']}'>{$question['label']}</a></th>";
 }
 
 $icons = [

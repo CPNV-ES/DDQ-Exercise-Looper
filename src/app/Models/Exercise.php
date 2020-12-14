@@ -1,38 +1,13 @@
 <?php
-require_once "../Db.php";
 
-class Exercise
-{
-    public $id;
-    private $title;
-    private $state;
-    private $createdAt;
-    private $updatedAt;
+require_once "Model.php";
 
-    public function __construct() {
+class Exercise extends Model {
+  protected $table = 'Exercises';
+  protected $readables = ['id','title','state','createdAt','updatedAt'];
+  protected $writables = ['title','state','updatedAt'];
 
-    }
-
-    public function all() {
-
-    }
-
-    public function load() {
-        if ($this->id != null)
-            return false;
-
-        
-    }
-
-    public function save() {
-
-    }
-
-    public function update() {
-
-    }
-
-    public function delete() {
-
-    }
+  public function __construct(){
+    parent::__construct();
+  }
 }

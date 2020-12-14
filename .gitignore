@@ -3,7 +3,7 @@
 .vscode/
 src/ressources/css/*
 app/*.credentials.php
-*.css
-*.css.map
 docs/sources/*.bak
 docs/sources/*.bak
+src/public/main.css
+src/public/main.css.map

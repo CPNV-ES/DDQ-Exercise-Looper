@@ -9,7 +9,7 @@ class Fulfillment extends Model {
     ['exercisesId' => 'exercises.id'],
     ['takesId' => 'takes.id']
   ];
-  protected $readables = ['answers.answer','exercises.title','exercises.state','takes.title'];
+  protected $readables = ['answers.answer','exercises.title','exercises.state','takes.title','takesId'];
   protected $writables = ['answersId','exercisesId','takesId','updatedAt'];
 
   public function __construct(){
