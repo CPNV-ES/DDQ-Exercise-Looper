@@ -30,9 +30,21 @@ Ensuite, ajoutez au fichier les lignes suivantes :
 </VirtualHost>
 ```
 
+#### Installation de Sass
+
+Afin de pouvoir compiler les fichiers .scss en .css l'installation de Sass est nécessaire :
+```bash
+npm install -g sass
+```
+
+Une fois installé, lancez la commande suivante pour compiler le .scss
+```
+sass src/ressources/scss/main.scss src/public/main.css
+```
+
 #### Accéder au site
 
-Lancez un navigateur puis entrez l'adresse suivante :
+Démarrez Laragon, lancez un navigateur puis entrez l'adresse suivante :
 ```url
 http://ddq-exercise-looper.test/
 ```
