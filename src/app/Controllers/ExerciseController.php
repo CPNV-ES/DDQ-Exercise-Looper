@@ -103,6 +103,14 @@ class ExerciseController {
 
         $this->manage();
     }
+
+    public function setState($id, $state) {
+        $ex = new Exercise();
+        $ex->update($id, [ $state ], [ 'state' ]);
+
+        $this->manage();
+    }
+
     public function exerciseResults($exerciseId) {
         $questionFieldModel = new QuestionField();
         $questions = $questionFieldModel->findByExercise($exerciseId);

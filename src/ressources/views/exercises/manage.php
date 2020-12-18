@@ -21,6 +21,9 @@ foreach($exercises as $exercise){
                         <a href="/exercises/'.$exercise['id'].'/delete">
                             <i class="fa fa-trash"></i>
                         </a>
+                        <a title="Be ready for answers" data-method="put" href="/exercises/'.$exercise['id'].'/setState/answering">
+                            <i class="fa fa-comment"></i>
+                        </a>
                     </td>
                 </tr>
             ';
@@ -33,7 +36,7 @@ foreach($exercises as $exercise){
                         <a href="/exercises/'.$exercise['id'].'/results">
                             <i class="far fa-chart-bar"></i>
                         </a>
-                        <a title="Close" data-method="put" href="/exercises/'.$exercise['id'].'?exercise%5Bstatus%5D=closed">
+                        <a title="Close" data-method="put" href="/exercises/'.$exercise['id'].'/setState/closed">
                             <i class="fa fa-minus-circle"></i>
                         </a>
                     </td>
