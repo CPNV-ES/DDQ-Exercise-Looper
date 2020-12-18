@@ -16,4 +16,10 @@ class QuestionController {
     $questionFieldsModel->insert([$_POST['label'],$id,$_POST['value']]);
     header('Location:/exercises/'.$id.'/questions-fields');
   }
+  function edit($idExercice,$idField){
+    $questionFieldsModel = new QuestionField();
+    $questionField = $questionFieldsModel->find($idField);
+
+    require_once "../ressources/views/questions/edit.php";
+  }
 }
