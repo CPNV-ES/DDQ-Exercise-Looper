@@ -18,7 +18,7 @@ foreach($exercises as $exercise){
                         <a href="/exercises/'.$exercise['id'].'/questions-fields">
                             <i class="fa fa-edit"></i>
                         </a>
-                        <a data-confirm="Are you sure?" title="Destroy" data-method="delete" href="/exercises/'.$exercise['id'].'">
+                        <a href="/exercises/'.$exercise['id'].'/delete">
                             <i class="fa fa-trash"></i>
                         </a>
                     </td>
@@ -48,7 +48,7 @@ foreach($exercises as $exercise){
                         <a href="/exercises/'.$exercise['id'].'/results">
                             <i class="far fa-chart-bar"></i>
                         </a>
-                        <a data-confirm="Are you sure?" title="Destroy" data-method="delete" href="/exercises/'.$exercise['id'].'">
+                        <a href="/exercises/'.$exercise['id'].'/delete">
                             <i class="fa fa-trash"></i>
                         </a>
                     </td>

@@ -14,6 +14,7 @@ $webrouter->add("/exercises/:exerciseId/take/:takeId", "ExerciseController::take
 $webrouter->add("/exercises/:exerciseId/results", "ExerciseController::exerciseResults");
 $webrouter->add("/exercises/:exerciseId/results/:questionId", "ExerciseController::questionResults");
 $webrouter->add("/exercises/listAnswering", "ExerciseController::listAnswering");
+$webrouter->add("/exercises/:id/delete", "ExerciseController::delete");
 $webrouter->add("/exercises/:id/questions-fields", "QuestionsController::index");
 
 try {

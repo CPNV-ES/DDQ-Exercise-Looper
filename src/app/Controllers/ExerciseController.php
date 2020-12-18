@@ -97,6 +97,12 @@ class ExerciseController {
         }
     }
 
+    public function delete($id) {
+        $ex = new Exercise();
+        $ex->delete($id);
+
+        $this->manage();
+    }
     public function exerciseResults($exerciseId) {
         $questionFieldModel = new QuestionField();
         $questions = $questionFieldModel->findByExercise($exerciseId);
