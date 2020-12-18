@@ -7,7 +7,7 @@ $header = "<span><a href='/exercises/{$data['exerciseId']}/results'>Exercise {$d
 $questions = "";
 
 foreach($data["questionsAnswers"] as $qa) {
-    $questions .= "<dt>{$qa['question']}</dt>";
+    $questions .= "<dt>{$qa['label']}</dt>";
     $questions .= "<dd>{$qa['answer']}</dt>";
 }
 

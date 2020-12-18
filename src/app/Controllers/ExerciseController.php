@@ -118,7 +118,7 @@ class ExerciseController {
 
             if($inputLength > 0) $fillPower = 1;
             if ($inputLength > 75) $fillPower = 2;
-            
+
             $takes[$fData["takesId"]]["questionsTakes"][$fData["id"]] = $fillPower;
         }
 
@@ -131,38 +131,25 @@ class ExerciseController {
     }
 
     public function takeDisplay($exerciseId, $takeId) {
+        $ex = (new Exercise())->find($exerciseId)[0];
+        $fu = (new Fulfillment())->findByTakeId($takeId);
         $data = [
             "exerciseId" => $exerciseId,
-            "exerciseTitle" => "Le test de votre vie",
+            "exerciseTitle" => $ex["title"],
             "takeId" => $takeId,
-            "takeTitle" => "2020-01-01 2020-08-25 09:03:43 UTC",
-            // TODO : THIS IS TEST DATA, GET DATA FROM MODEL (AND MAYBE DIRECTLY PASS MODEL RATHER THAN A DICTIONARY)!
-            "questionsAnswers" => [
-                [
-                    "id" => 101,
-                    "question" => "A. Lorem ipsum dolor sit amet?",
-                    "answer" => "Oui"
-                ],
-                [
-                    "id" => 103,
-                    "question" => "C. Ut enim ad minim veniam, aute irure dolor ?",
-                    "answer" => "Lorem ipsum dolor sit amet\nSunt in culpa qui officia",
-                ],
-                [
-                    "id" => 102,
-                    "question" => "B. Sunt in culpa qui officia?",
-                    "answer" => "Non.",
-                ]
-            ]
+            "takeTitle" => $fu[0]["title"],
+            "questionsAnswers" => $fu
         ];
 
         require_once "../ressources/views/exercises/takeDisplay.php";
     } 
 
     public function questionResults($exerciseId, $questionId) {
+        $ex = (new Exercise())->find($exerciseId);
+
         $data = [
             "exerciseId" => $exerciseId,
-            "exerciseTitle" => "Le test de votre vie",
+            "exerciseTitle" => $ex["title"],
             "questionId" => $questionId,
             "questionTitle" => "A. Lorem ipsum dolor sit amet?",
             // TODO : THIS IS TEST DATA, GET DATA FROM MODEL (AND MAYBE DIRECTLY PASS MODEL RATHER THAN A DICTIONARY)!
