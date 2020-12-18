@@ -14,11 +14,20 @@ $webrouter->add("/exercises/:exerciseId/take/:takeId", "ExerciseController::take
 $webrouter->add("/exercises/:exerciseId/results", "ExerciseController::exerciseResults");
 $webrouter->add("/exercises/:exerciseId/results/:questionId", "ExerciseController::questionResults");
 $webrouter->add("/exercises/listAnswering", "ExerciseController::listAnswering");
+<<<<<<< HEAD
 $webrouter->add("/exercises/:id/delete", "ExerciseController::delete");
 $webrouter->add("/exercises/:exerciseId/setState/:stateId", "ExerciseController::setState");
 $webrouter->add("/exercises/:id/questions-fields", "QuestionsController::index");
 $webrouter->add("/exercises/storeTakeAnswersData/:exerciseId", "ExerciseController::storeTakeAnswersData", "POST");
 $webrouter->add("/exercises/updateTakeAnswersData/:exerciseId/:takeId", "ExerciseController::updateTakeAnswersData", "POST");
+=======
+$webrouter->add("/exercises/:id/questions-fields", "QuestionController::index");
+$webrouter->add("/exercises/:id/questions-fields", "QuestionController::store","POST");
+$webrouter->add("/exercises/:id/questions-fields/:fieldsId/edit", "QuestionController::edit");
+$webrouter->add("/exercises/:id/questions-fields/:fieldsId", "QuestionController::update",'POST');
+$webrouter->add("/exercises/:id/questions-fields/:fieldsId/delete", "QuestionController::delete");
+
+>>>>>>> questions-fields
 
 try {
     $webrouter->run();
