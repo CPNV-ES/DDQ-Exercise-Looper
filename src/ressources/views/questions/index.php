@@ -10,7 +10,7 @@ foreach($questionFields as $field){
       <td>'.$field['label'].'</td>
       <td>'.$field['valueType'].'</td>
       <td>
-        <a href="/exercises/'.$id.'/questions-fields/'.$field['id'].'"><i class="fas fa-edit"></i></a>
+        <a href="/exercises/'.$id.'/questions-fields/'.$field['id'].'/edit"><i class="fas fa-edit"></i></a>
         <a href="/exercises/'.$id.'/questions-fields/'.$field['id'].'/delete"><i class="fas fa-trash"></i></a>
       </td>
   </tr>';
