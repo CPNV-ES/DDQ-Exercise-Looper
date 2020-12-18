@@ -1,0 +1,9 @@
+.phpunit.result.cache
+.idea/
+.vscode/
+src/ressources/css/*
+app/*.credentials.php
+docs/sources/*.bak
+docs/sources/*.bak
+src/public/main.css
+src/public/main.css.map

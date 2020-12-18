@@ -1,0 +1,40 @@
+%header-properties {
+  width: 100%;
+  display: inline-flex;
+  text-align: center;
+  align-items: center;
+}
+
+.header-home {
+  @extend %header-properties;
+
+  height: 300px;
+  font-size: 3rem;
+  letter-spacing: 1.1rem;
+  justify-content: center;
+
+  a {
+    position: absolute;
+    margin-bottom: 130px;
+  }
+
+  div {
+    margin-top: 100px;
+  }
+}
+
+.header-basic {
+  @extend %header-properties;
+
+  height: 50px;
+  padding-left: 20%;
+  
+  img {
+    height: 50px;
+    width: 50px;
+  }
+
+  span {
+    margin: auto 20px;
+  }
+}
