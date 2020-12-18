@@ -145,31 +145,16 @@ class ExerciseController {
     } 
 
     public function questionResults($exerciseId, $questionId) {
-        $ex = (new Exercise())->find($exerciseId);
+        $ex = (new Exercise())->find($exerciseId)[0];
+        $qu = (new QuestionField())->find($questionId)[0];
+        $fu = (new Fulfillment())->findByExerciseIdAndQuestionId($exerciseId, $questionId);
 
         $data = [
             "exerciseId" => $exerciseId,
             "exerciseTitle" => $ex["title"],
             "questionId" => $questionId,
-            "questionTitle" => "A. Lorem ipsum dolor sit amet?",
-            // TODO : THIS IS TEST DATA, GET DATA FROM MODEL (AND MAYBE DIRECTLY PASS MODEL RATHER THAN A DICTIONARY)!
-            "takes" => [
-                [
-                    "id" => 101,
-                    "title" => "2020-01-01 2020-08-25 09:03:43 UTC",
-                    "answer" => "Oui"
-                ],
-                [
-                    "id" => 103,
-                    "title" => "2020-01-01 2020-08-25 09:15:45 UTC",
-                    "answer" => "Lorem ipsum dolor sit amet\nSunt in culpa qui officia",
-                ],
-                [
-                    "id" => 102,
-                    "title" => "2020-01-01 2020-08-25 09:05:43 UTC",
-                    "answer" => "Non.",
-                ]
-            ]
+            "questionTitle" => $qu["label"],
+            "takes" => $fu
         ];
 
         require_once "../ressources/views/exercises/questionResults.php";
