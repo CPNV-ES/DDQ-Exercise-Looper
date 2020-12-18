@@ -40,6 +40,11 @@ class ExerciseController {
     }
 
     public function takeNew($exerciseId) {
+        $ex = (new Exercise())->find($exerciseId);
+        if(!isset($ex[0]) || !isset($ex[0]["id"]) || $ex[0]["state"] != "Answering") {
+            require_once "../ressources/views/404.php";
+        }
+
         $questionFieldModel = new QuestionField();
         $questions = $questionFieldModel->findByExerciseId($exerciseId);
 
@@ -52,6 +57,16 @@ class ExerciseController {
     }
 
     public function takeEdit($exerciseId, $takeId) {
+        $ex = (new Exercise())->find($exerciseId);
+        if(!isset($ex[0]) || !isset($ex[0]["id"]) || $ex[0]["state"] != "Answering") {
+            require_once "../ressources/views/404.php";
+        }
+
+        $take = (new Take())->find($takeId);
+        if(!isset($take[0]) || !isset($take[0]["id"])) {
+            require_once "../ressources/views/404.php";
+        }
+
         $fulfillmentModel = new Fulfillment();
         $fulfillments = $fulfillmentModel->findByTakeId($takeId);
 
@@ -184,8 +199,6 @@ class ExerciseController {
     }
 
     public function updateTakeAnswersData($exId, $takeId) {
-        var_dump($_POST);
-
         foreach($_POST["answers"] as $answerId => $answerData) {
             $answer = new Answer();
             $answer->update($answerId, [$answerData], ['answer']);
