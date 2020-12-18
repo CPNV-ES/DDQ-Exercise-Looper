@@ -38,7 +38,7 @@ class ExerciseController {
     public function takeNew($exerciseId) {
         $questionFieldModel = new QuestionField();
 
-        $questions = $questionFieldModel->findByExercise($exerciseId);
+        $questions = $questionFieldModel->findByExerciseId($exerciseId);
 
         $data = [
             "exerciseId" => $exerciseId,
