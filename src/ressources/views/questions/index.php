@@ -32,7 +32,7 @@ $content = '
                 '.$questionfieldsList.'
             </tbody>
         </table>
-        <a class="button bg-primary text-white" href=""></a>
+        <a class="button bg-primary text-white" href="/exercises/'.$id.'/setState/answering"><i class="fas fa-comment"></i> Complete and be ready for answers</a>
     </div>
     <div class="col-2">
         <span class="page-title">New Question Fields</span>
