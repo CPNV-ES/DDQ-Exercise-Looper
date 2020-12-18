@@ -4,6 +4,8 @@ require_once dirname(__DIR__,1).'/Models/Exercise.php';
 require_once dirname(__DIR__,1).'/Models/QuestionField.php';
 require_once dirname(__DIR__,1).'/Models/Fulfillment.php';
 require_once dirname(__DIR__,1).'/Models/Take.php';
+require_once dirname(__DIR__,1).'/Models/Answer.php';
+
 
 class ExerciseController {
 
@@ -49,30 +51,13 @@ class ExerciseController {
     }
 
     public function takeEdit($exerciseId, $takeId) {
+        $fulfillmentModel = new Fulfillment();
+        $fulfillments = $fulfillmentModel->findByTakeId($takeId);
+
         $data = [
             "exerciseId" => $exerciseId,
             "takeId" => $takeId,
-            // TODO : THIS IS TEST DATA, GET DATA FROM MODEL (AND MAYBE DIRECTLY PASS MODEL RATHER THAN A DICTIONARY)!
-            "questionfields" => [
-                [
-                    "id" => 1,
-                    "label" => "Test1",
-                    "valueType" => "Single line text",
-                    "value" => "Some value"
-                ],
-                [
-                    "id" => 2,
-                    "label" => "Test2",
-                    "valueType" => "List of single lines",
-                    "value" => "Some\nMultiline\nValue"
-                ],
-                [
-                    "id" => 3,
-                    "label" => "Test3",
-                    "valueType" => "List of Multi-line text",
-                    "value" => "Some\nMultiline\nValue"
-                ]
-            ]
+            "questionfields" => $fulfillments
         ];
 
         require_once "../ressources/views/exercises/take.php";
@@ -216,5 +201,39 @@ class ExerciseController {
         ];
 
         require_once "../ressources/views/exercises/questionResults.php";
-    } 
+    }
+
+    // This shouldn't be in this controller, but who cares. I sure don't
+    public function storeTakeAnswersData($exId) {
+        $take = new Take();
+        $takeId = $take->insert(['title' => date('c', time())]);
+
+        foreach($_POST["answers"] as $answerId => $answerData) {
+            $answer = new Answer();
+            $answerId = $answer->insert([
+               'answer' => $answerData,
+               'questionsFieldsId' => $answerId
+            ]);
+
+            $fulfillment = new Fulfillment();
+            $fulfillment->insert([
+                'answersId' => $answerId,
+                'exercisesId' => $exId,
+                'takesId' => $takeId
+            ]);
+        }
+
+        header("Location: /exercises/".$exId."/take/".$takeId."/edit");
+    }
+
+    public function updateTakeAnswersData($exId, $takeId) {
+        var_dump($_POST);
+
+        foreach($_POST["answers"] as $answerId => $answerData) {
+            $answer = new Answer();
+            $answer->update($answerId, [$answerData], ['answer']);
+        }
+
+        header("Location: /exercises/".$exId."/take/".$takeId."/edit");
+    }
 }

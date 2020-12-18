@@ -6,27 +6,29 @@ $header = '<span>Exercise ' . $data["exerciseId"] . '</span>';
 
 $_fields = "";
 foreach($data["questionfields"] as $field) {
-    $_val = isset($field["value"]) ? $field["value"] : "";
+    $_val = isset($field["answer"]) ? $field["answer"] : "";
     $_fields .= "<div class='fieldContainer'>";
     $_fields .= "<label for='{$field['id']}'>{$field['label']}</label>";
     switch($field["valueType"]) {
         case "Single line text":
-            $_fields .= "<input class='input-text'  id='{$field['id']}' type='text' value='{$_val}' />";
+            $_fields .= "<input class='input-text' name='answers[{$field['id']}]' id='{$field['id']}' type='text' value='{$_val}' />";
             break;
         case "Multi-line text":
-            $_fields .= "<textarea class='input-text' id='{$field['id']}' rows='5'>{$_val}</textarea>";
+            $_fields .= "<textarea class='input-text' name='answers[{$field['id']}]' id='{$field['id']}' rows='5'>{$_val}</textarea>";
             break;
         case "List of single lines":
-            $_fields .= "<textarea class='input-text' id='{$field['id']}' rows='5'>{$_val}</textarea>";
+            $_fields .= "<textarea class='input-text' name='answers[{$field['id']}]' id='{$field['id']}' rows='5'>{$_val}</textarea>";
             break;
     }
     $_fields .= "</div>";
 }
-
+$action = isset($data["takeId"]) ?
+        '/exercises/updateTakeAnswersData/'.$data["exerciseId"].'/'.$data["takeId"]:
+        '/exercises/storeTakeAnswersData/'.$data["exerciseId"];
 $content =
     '<div class="row">
         <div class="col-1">
-        <form>
+        <form action="'.$action.'" method="POST">
             <p class="page-title">Your Take</p>'
 
             . (isset($data["takeId"]) ?

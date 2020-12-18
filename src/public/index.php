@@ -17,6 +17,8 @@ $webrouter->add("/exercises/listAnswering", "ExerciseController::listAnswering")
 $webrouter->add("/exercises/:id/delete", "ExerciseController::delete");
 $webrouter->add("/exercises/:exerciseId/setState/:stateId", "ExerciseController::setState");
 $webrouter->add("/exercises/:id/questions-fields", "QuestionsController::index");
+$webrouter->add("/exercises/storeTakeAnswersData/:exerciseId", "ExerciseController::storeTakeAnswersData", "POST");
+$webrouter->add("/exercises/updateTakeAnswersData/:exerciseId/:takeId", "ExerciseController::updateTakeAnswersData", "POST");
 
 try {
     $webrouter->run();

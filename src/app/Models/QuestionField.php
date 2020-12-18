@@ -7,7 +7,7 @@ class QuestionField extends Model {
   protected $foreignKeys = [
     ['exercisesId' => 'Exercises.id']
   ];
-  protected $readables = ['id','label','valueType','createdAt','updatedAt'];
+  protected $readables = ['id','label','valueType','createdAt','updatedAt', 'exercisesId'];
   protected $writables = ['label','exercisesId','valueType','updatedAt'];
 
   public function findByExerciseId($exId) {
