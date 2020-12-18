@@ -29,4 +29,10 @@ class QuestionController {
     $questionFieldsModel->update($idField, [$_POST['label'],$_POST['value']], ['label', 'valueType']);
     header('Location:/exercises/'.$idExercice.'/questions-fields');
   }
+
+  function delete($idExercice,$idField){
+    $questionFieldsModel = new QuestionField();
+    $questionFieldsModel->delete($idField);
+    header('Location:/exercises/'.$idExercice.'/questions-fields');
+  }
 }
