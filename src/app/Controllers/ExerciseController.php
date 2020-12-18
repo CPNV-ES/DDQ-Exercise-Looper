@@ -32,7 +32,9 @@ class ExerciseController {
      */
     public function listAnswering() {
         $exerciseModel = new Exercise();
-        $exercises = $exerciseModel->all();
+        $exercises = array_filter($exerciseModel->all(), function($e) {
+            return $e["state"] == "Answering";
+        });
 
         require_once "../ressources/views/exercises/listAnswering.php";
     }
