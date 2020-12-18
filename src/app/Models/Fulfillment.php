@@ -25,4 +25,13 @@ class Fulfillment extends Model {
     $sth->execute();
     return $sth->fetchAll(PDO::FETCH_ASSOC);
   }
+
+  public function findByExerciseId($exId) {
+      $q = $this->baseSelect();
+      $q .= " WHERE fulfillments.exercisesId = ".$exId;
+
+      $sth = $this->dbConnection->prepare($q);
+      $sth->execute();
+      return $sth->fetchAll(PDO::FETCH_ASSOC);
+  }
 }

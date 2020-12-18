@@ -41,7 +41,6 @@ class ExerciseController {
 
     public function takeNew($exerciseId) {
         $questionFieldModel = new QuestionField();
-
         $questions = $questionFieldModel->findByExerciseId($exerciseId);
 
         $data = [
@@ -100,49 +99,33 @@ class ExerciseController {
 
     public function exerciseResults($exerciseId) {
         $questionFieldModel = new QuestionField();
-        $questions = $questionFieldModel->findByExercise($exerciseId);
+        $questions = $questionFieldModel->findByExerciseId($exerciseId);
 
         $fulFillmentModel = new Fulfillment();
-        $fullFillments = $fulFillmentModel->findByExercise($exerciseId);
+        $fulFillments = $fulFillmentModel->findByExerciseId($exerciseId);
+
+        $takes = [];
+
+        foreach($fulFillments as $fId => $fData) {
+            if(!array_key_exists($fData["takesId"], $takes)) {
+                $takes[$fData["takesId"]] = [
+                    "title" => $fData["title"],
+                    "questionsTakes" => []
+                ];
+            }
+            $fillPower = 0;
+            $inputLength = strlen($fData["answer"]);
+
+            if($inputLength > 0) $fillPower = 1;
+            if ($inputLength > 75) $fillPower = 2;
+            
+            $takes[$fData["takesId"]]["questionsTakes"][$fData["id"]] = $fillPower;
+        }
 
         $data = [
             "exerciseId" => $exerciseId,
-            // TODO : THIS IS TEST DATA, GET DATA FROM MODEL (AND MAYBE DIRECTLY PASS MODEL RATHER THAN A DICTIONARY)!
             "questions" => $questions,
-            "takes" => [
-                500 => [
-                    "title" => "2020-08-25 09:01:22 UTC",
-                    "questionsTakes" => [
-                        100 => 0,
-                        102 => 2,
-                        101 => 1,
-                    ]
-                ],
-                508 => [
-                    "title" => "2020-08-25 09:03:56 UTC",
-                    "questionsTakes" => [
-                        100 => 0,
-                        103 => 2,
-                        102 => 1
-                    ]
-                ],
-                504 => [
-                    "title" => "2020-08-25 09:02:12 UTC",
-                    "questionsTakes" => [
-                        102 => 2,
-                        101 => 1,
-                        100 => 0
-                    ]
-                ],
-                505 => [
-                    "title" => "2020-08-25 09:03:43 UTC",
-                    "questionsTakes" => [
-                        100 => 0,
-                        101 => 1,
-                        102 => 2
-                    ]
-                ],
-            ]
+            "takes" => $takes
         ];
         require_once "../ressources/views/exercises/exerciseResults.php";
     }
