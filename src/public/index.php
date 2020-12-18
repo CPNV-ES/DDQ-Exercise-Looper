@@ -17,7 +17,7 @@ $webrouter->add("/exercises/listAnswering", "ExerciseController::listAnswering")
 $webrouter->add("/exercises/:id/questions-fields", "QuestionController::index");
 $webrouter->add("/exercises/:id/questions-fields", "QuestionController::store","POST");
 $webrouter->add("/exercises/:id/questions-fields/:fieldsId/edit", "QuestionController::edit");
-$webrouter->add("/exercises/:id/questions-fields/:fieldsId/", "QuestionController::update",'POST');
+$webrouter->add("/exercises/:id/questions-fields/:fieldsId", "QuestionController::update",'POST');
 
 
 try {
