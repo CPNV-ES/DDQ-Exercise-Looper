@@ -194,8 +194,6 @@ class Model {
 
         $state = $sth->execute([$id]);
 
-        var_dump($sth->errorInfo());
-
         return $state;
     }
 }
